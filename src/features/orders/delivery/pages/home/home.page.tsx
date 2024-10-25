@@ -68,6 +68,7 @@ export const HomePage = () => {
         <Button onClick={() => navigate(ProtectedUrls.FILTERS)} label={'Filtrar'} startIcon={<FilterIcon />} small />
         <Button onClick={() => navigate(ProtectedUrls.NEW_ORDER)} label={'Nuevo'} startIcon={<AddCircleIcon />} small />
       </div>
+      {!orders.length && <p className={cn('no-orders')}>No hay pedidos</p>}
       <ul onScroll={handleScroll} className={cn('orders')}>
         {orders.length > 0 &&
           orders.map((order, index) => (

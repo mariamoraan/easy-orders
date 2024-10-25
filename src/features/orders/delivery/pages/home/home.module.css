@@ -145,6 +145,14 @@
   background: #555;
 }
 
+.no-orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
 .orders-li {
   padding: 16px 16px;
   display: flex;
