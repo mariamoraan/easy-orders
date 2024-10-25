@@ -4,7 +4,7 @@ const cn = bind(styles);
 
 interface Props {
   value?: string | number;
-  onChange?: <T>(value: T) => void;
+  onChange?: (value: string) => void;
   type?: 'text' | 'email' | 'password' | 'number';
   placeholder?: string;
   disabled?: boolean;
