@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 16px 16px;
+  padding: 24px 16px;
   animation-name: appear;
   animation-duration: 200ms;
   animation-timing-function: ease-in-out;
