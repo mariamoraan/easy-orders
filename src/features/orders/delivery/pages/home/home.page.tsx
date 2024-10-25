@@ -62,13 +62,11 @@ export const HomePage = () => {
       </div>
       <h2 className={cn('title')}>{company.name}</h2>
       <div className={cn('action-bar')}>
+        <span className={cn('orders-count')}>
+          {orders.length} de {count}
+        </span>
         <Button onClick={() => navigate(ProtectedUrls.FILTERS)} label={'Filtrar'} startIcon={<FilterIcon />} small />
         <Button onClick={() => navigate(ProtectedUrls.NEW_ORDER)} label={'Nuevo'} startIcon={<AddCircleIcon />} small />
-      </div>
-      <div className={cn('selector')}>
-        <p className={cn('selector-p')}>
-          ALL <span className={cn('selector-p__tag')}>{count}</span>
-        </p>
       </div>
       <ul onScroll={handleScroll} className={cn('orders')}>
         {orders.length > 0 &&
