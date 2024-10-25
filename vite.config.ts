@@ -7,7 +7,7 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
   manifest: {
     name: 'Easy Orders',
-    short_name: 'eady-orders',
+    short_name: 'Easy Orders',
     description: 'An easy app to manage your orders',
     icons: [
       {
