@@ -1,0 +1,63 @@
+.wrapper {
+  position: relative;
+  padding: 48px 12px;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+.header {
+  margin-bottom: 36px;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  gap: 12px;
+  align-items: center;
+  font-size: larger;
+}
+
+.title {
+  font-weight: 600;
+  font-size: larger;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selectable-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.selectable-group__title {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: large;
+}
+
+.selectable-group__item {
+  padding: 8px 12px;
+  border: 1px solid var(--light-grey);
+}
+
+.selectable-group__item--selected {
+  border-color: var(--dark-grey);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

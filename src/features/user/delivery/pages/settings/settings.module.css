@@ -1,0 +1,46 @@
+.wrapper {
+  padding: 48px 12px;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.header {
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 12px;
+  align-items: center;
+  font-size: larger;
+}
+
+.title {
+  font-weight: 600;
+  font-size: larger;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.links__li {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+  font-size: 1rem;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  padding: 48px 12px;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from './auth.context';
+import { useAuth } from '../../features/auth/delivery/context/auth.context';
 import { Urls } from './urls';
 
 export const ProtectedRoutesWrapper = () => {

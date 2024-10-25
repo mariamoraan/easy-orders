@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-bottom: 48px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-grey);
+}

@@ -1,0 +1,10 @@
+.date-input {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.date-input__input {
+  width: max(100%, 5rem);
+}

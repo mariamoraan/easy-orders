@@ -1,0 +1,25 @@
+.order-status-tag {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: small;
+  text-transform: uppercase;
+  border-radius: 24px;
+}
+
+.order-status-tag--PENDING {
+  color: orange;
+}
+
+.order-status-tag--READY {
+  color: purple;
+}
+
+.order-status-tag--DELIVERED {
+  color: green;
+}
+
+.order-status-tag--CANCELLED {
+  color: red;
+}

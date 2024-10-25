@@ -1,5 +1,71 @@
 {
   "common": {
     "greeting": "Hii"
+  },
+  "dates": {
+    "today": "Hoy",
+    "tomorrow": "Mañana"
+  },
+  "errors": {
+    "auth": {
+      "auth/invalid-credential": "El usuario o la contraseña son incorrectos.",
+      "auth/invalid-email": "El email no corresponde a ningún usuario."
+    }
+  },
+  "order": {
+    "status": {
+      "PENDING": "Pendiente",
+      "READY": "Listo",
+      "DELIVERED": "Entregado",
+      "CANCELLED": "Cancelado"
+    }
+  },
+  "login": {
+    "welcome-back": "Hola de nuevo",
+    "log-in-with-credentials": "Inicia sesión con tus datos",
+    "email": "Email",
+    "email-placeholder": "alejandro@email.com",
+    "password": "Contraseña",
+    "password-placeholder": "•••••••••••••",
+    "do-not-have-account": "¿No tienes una cuenta?",
+    "log-in": "Inciar sesión",
+    "sign-up": "Registrate"
+  },
+  "signup": {
+    "create-account": "Crea tu cuenta",
+    "email": "Email",
+    "email-placeholder": "alejandro@email.com",
+    "password": "Contraseña",
+    "password-placeholder": "•••••••••••••",
+    "already-have-account": "¿Tienes una cuenta?",
+    "log-in": "Incia sesión",
+    "sign-up": "Registrate"
+  },
+  "home": {
+    "greeting": "Hola,\n{{name}}",
+    "orders": "Pedidos",
+    "order": "Pedido"
+  },
+  "new-order": {
+    "new-order": "Nuevo pedido",
+    "order-number": "Número",
+    "creation-date": "Fecha de creación",
+    "daliver-date": "Fecha de entrega",
+    "client-name": "Nombre",
+    "client-address": "Dirección del  cliente",
+    "client-phone": "Teléfono del cliente",
+    "description": "Descripción",
+    "signal": "Señal",
+    "create": "Crear"
+  },
+  "order-detail": {
+    "order": "Pedido",
+    "creation-date": "Fecha de creación",
+    "daliver-date": "Fecha de entrega",
+    "client-name": "Nombre",
+    "state": "Estado",
+    "sign": "Señal",
+    "client-address": "Dirección",
+    "client-phone": "Teléfono"
   }
 }
