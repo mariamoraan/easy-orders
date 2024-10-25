@@ -178,16 +178,10 @@
 }
 
 .order-title__name {
-  font-weight: 600;
-  font-size: small;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .order-title__client {
-  font-weight: 600;
-  font-size: small;
-  text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
