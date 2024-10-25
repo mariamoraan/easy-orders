@@ -6,9 +6,9 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: 'prompt',
   manifest: {
-    name: 'React-vite-app',
-    short_name: 'react-vite-app',
-    description: 'I am a simple vite app',
+    name: 'Easy Orders',
+    short_name: 'eady-orders',
+    description: 'An easy app to manage your orders',
     icons: [
       {
         src: '/android-chrome-192x192.png',
@@ -35,8 +35,8 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
         purpose: 'any maskable',
       },
     ],
-    theme_color: '#171717',
-    background_color: '#f0e7db',
+    theme_color: '#ffffff',
+    background_color: '#ffffff',
     display: 'standalone',
     scope: '/',
     start_url: '/',
