@@ -46,7 +46,7 @@
 
 .new-order-link {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--on-background-color);
 }
 
 .avatar {
@@ -71,8 +71,8 @@
   margin-bottom: 12px;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  grid-template-rows: repeat(2, 2fr);
+  grid-template-columns: auto 1fr 1fr;
+  align-items: center;
   gap: 12px;
 }
 
@@ -83,7 +83,6 @@
   gap: 8px;
   border: 1px solid var(--light-grey);
   border-radius: 8px;
-  grid-column: 1 / span 2;
 }
 
 .searcher-input {
@@ -91,6 +90,15 @@
   border: none;
   outline: none;
   background: none;
+}
+
+.filters,
+.new-order-link {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .selector {

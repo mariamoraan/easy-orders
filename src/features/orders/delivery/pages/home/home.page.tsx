@@ -5,10 +5,9 @@ import { getOnboardingStep, ONBOARDING_STEPS } from '@/features/onboarding/utils
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ProtectedUrls } from '@/core/routing/urls';
 import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
-import { ArrowForwardIcon, FilterIcon, LongArrowRightIcon, SearchIcon } from '@/core/icons';
+import { AddCircleIcon, ArrowForwardIcon, FilterIcon, LongArrowRightIcon, SearchIcon } from '@/core/icons';
 import { Suspense, useState } from 'react';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { Button } from '@/core/components/button/button.component';
 import { useCompany } from '@/features/company/delivery/context/company.provider';
 import { useOrders } from '../../context/orders.provider';
 import { DateTime } from '@/core/datetime/datetime';
@@ -66,25 +65,20 @@ export const HomePage = () => {
         </Link>
       </div>
       <h2 className={cn('title')}>{company.name}</h2>
-      <div className={cn('orders-header')}>
-        <h2 className={cn('orders-title')}>{t('home.orders')}</h2>
-        <Link className={cn('new-order-link')} to={ProtectedUrls.NEW_ORDER}>
-          Nuevo pedido
-        </Link>
-      </div>
       <div className={cn('action-bar')}>
         <form onSubmit={onSearch} className={cn('searcher')}>
           <SearchIcon />
           <input className={cn('searcher-input')} placeholder="Search..." />
           <ActionButton type="submit" label={<ArrowForwardIcon />} />
         </form>
-        <Button
+        <ActionButton
+          className={cn('filters')}
           onClick={() => navigate(ProtectedUrls.FILTERS)}
-          center
-          fullWidth
-          label="Filtrar"
-          startIcon={<FilterIcon />}
+          label={<FilterIcon />}
         />
+        <Link className={cn('new-order-link')} to={ProtectedUrls.NEW_ORDER}>
+          <AddCircleIcon />
+        </Link>
       </div>
       <div className={cn('selector')}>
         <p className={cn('selector-p')}>

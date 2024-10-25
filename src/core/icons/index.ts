@@ -21,6 +21,7 @@ import { RiSaveLine } from 'react-icons/ri';
 import { MdOutlineDone } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
 import { FaCheckDouble } from 'react-icons/fa';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 
 export {
   MdOutlineBorderAll as LogoIcon,
@@ -32,6 +33,7 @@ export {
   IoFilterOutline as FilterIcon,
   RxCaretSort as SortIcon,
   IoAddOutline as AddIcon,
+  IoIosAddCircleOutline as AddCircleIcon,
   IoChevronBackOutline as ArrowBackIcon,
   VscAccount as AccountIcon,
   IoMdNotificationsOutline as NotificationIcon,
