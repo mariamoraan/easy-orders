@@ -71,9 +71,9 @@
   margin-bottom: 12px;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: 1fr 24px 24px;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .searcher {
