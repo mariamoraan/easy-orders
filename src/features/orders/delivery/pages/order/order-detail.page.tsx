@@ -12,6 +12,7 @@ import { Dropdown } from '@/core/components/dropdown/dropdown.component';
 import { OrderDetail } from '../../components/order-detail/order-detail.component';
 import { EditOrder } from '../../components/edit-order/edit-order.component';
 import { useOrders } from '../../context/orders.provider';
+import { OrderSkeleton } from '../../components/order-skeleton/order-skeleton.component';
 const cn = bind(styles);
 
 export const OrderDetailPage = () => {
@@ -65,7 +66,7 @@ export const OrderDetailPage = () => {
   }
 
   if (!order) {
-    return <div>Mock</div>;
+    return <OrderSkeleton />;
   }
 
   if (isEditing)

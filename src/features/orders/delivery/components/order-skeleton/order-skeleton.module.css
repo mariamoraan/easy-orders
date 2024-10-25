@@ -1,0 +1,32 @@
+.wrapper {
+  position: relative;
+  padding: 24px 16px;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+
+.centered {
+  align-self: center;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
