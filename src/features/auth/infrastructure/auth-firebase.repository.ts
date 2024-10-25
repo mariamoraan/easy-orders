@@ -33,7 +33,8 @@ export class AuthFirebaseRepository implements AuthRepository {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       const user = await this.findUserById(userCredential.user.uid);
       return user;
-    } catch (error: unknown) {
+    } catch (e: unknown) {
+      const error = e as { code?: number; message?: string };
       const errorCode = error?.code || 201;
       const errorMessage = error?.message || 'Unkown error';
       return new AuthError(errorCode, errorMessage);
@@ -52,7 +53,8 @@ export class AuthFirebaseRepository implements AuthRepository {
       });
       const user = await this.findUserById(userCredential.user.uid);
       return user;
-    } catch (error: unknown) {
+    } catch (e: unknown) {
+      const error = e as { code?: number; message?: string };
       const errorCode = error?.code || 201;
       const errorMessage = error?.message || 'Unkown error';
       return new AuthError(errorCode, errorMessage);
