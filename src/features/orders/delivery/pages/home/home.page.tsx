@@ -71,7 +71,11 @@ export const HomePage = () => {
       <ul onScroll={handleScroll} className={cn('orders')}>
         {orders.length > 0 &&
           orders.map((order, index) => (
-            <li key={index} className={cn('orders-li')}>
+            <li
+              key={index}
+              className={cn('orders-li')}
+              onClick={() => navigate(ProtectedUrls.ORDER.replace(':orderId', order.id))}
+            >
               <Suspense fallback={<div className={cn('order-li__skeleton')}></div>}>
                 <div className={cn('order__top-bar')}>
                   <StatusTag status={order.status} />
