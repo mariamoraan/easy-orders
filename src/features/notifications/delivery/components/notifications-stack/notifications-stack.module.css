@@ -1,0 +1,29 @@
+.notifications-stack {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notifications-stack--li {
+  padding: 24px;
+  min-width: 300px;
+  background: var(--on-background-color);
+  color: var(--background-color);
+  border-radius: 4px;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

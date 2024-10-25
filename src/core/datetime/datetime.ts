@@ -23,6 +23,9 @@ export class DateTime {
   plus(days: number): DateTime {
     return new DateTime(this.datetime.plus({ days }));
   }
+  plusSeconds(seconds: number): DateTime {
+    return new DateTime(this.datetime.plus({ seconds }));
+  }
   year(): number {
     return this.datetime.year;
   }

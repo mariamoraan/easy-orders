@@ -4,6 +4,7 @@ import '@/core/firebase';
 import { CompanyProvider } from './features/company/delivery/context/company.provider';
 import { OrdersProvider } from './features/orders/delivery/context/orders.provider';
 import { useEffect, useRef } from 'react';
+import { NotificationsProvider } from './features/notifications/delivery/context/notifications.provider';
 
 export const App = () => {
   const scrollInto = useRef<HTMLDivElement>(null);
@@ -12,14 +13,16 @@ export const App = () => {
     scrollInto?.current.scrollIntoView();
   }, [scrollInto]);
   return (
-    <AuthProvider>
-      <CompanyProvider>
-        <OrdersProvider>
-          <div ref={scrollInto}>
-            <Outlet />
-          </div>
-        </OrdersProvider>
-      </CompanyProvider>
-    </AuthProvider>
+    <NotificationsProvider>
+      <AuthProvider>
+        <CompanyProvider>
+          <OrdersProvider>
+            <div ref={scrollInto}>
+              <Outlet />
+            </div>
+          </OrdersProvider>
+        </CompanyProvider>
+      </AuthProvider>
+    </NotificationsProvider>
   );
 };

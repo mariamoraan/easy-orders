@@ -39,12 +39,3 @@
   background: rgb(249, 249, 249);
   border-radius: 4px;
 }
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
