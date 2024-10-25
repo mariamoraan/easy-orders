@@ -74,14 +74,14 @@ export const HomePage = () => {
             <li
               key={index}
               className={cn('orders-li')}
-              onClick={() => navigate(ProtectedUrls.ORDER.replace(':orderId', order.id))}
+              onClick={() =>
+                navigate(ProtectedUrls.ORDER.replace(':orderId', order.id), { state: { orderId: order.id } })
+              }
             >
               <Suspense fallback={<div className={cn('order-li__skeleton')}></div>}>
                 <div className={cn('order__top-bar')}>
                   <StatusTag status={order.status} />
-                  <Link className={cn('order-detail__link')} to={ProtectedUrls.ORDER.replace(':orderId', order.id)}>
-                    <ArrowForwardIcon />
-                  </Link>
+                  <ArrowForwardIcon className={cn('order-detail__link')} />
                 </div>
                 <div>
                   <div className={cn('order-title')}>
