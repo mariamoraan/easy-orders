@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  padding: 48px 12px;
+  padding: 16px 16px;
   height: 100dvh;
   display: flex;
   flex-direction: column;
