@@ -110,6 +110,8 @@ section {
 }
 body {
   line-height: 1;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
 }
 ol,
 ul {

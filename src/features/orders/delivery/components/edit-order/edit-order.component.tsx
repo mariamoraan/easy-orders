@@ -9,6 +9,8 @@ import { DateTime } from '@/core/datetime/datetime';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
 import { ArrowBackIcon, SaveIcon } from '@/core/icons';
 import { StatusSelector } from '../status-selector/status-selector.component';
+import { InputNumber } from '@/core/components/form/input-number/input-number.component';
+import { useAuth } from '@/features/auth/delivery/context/auth.context';
 const cn = bind(styles);
 
 interface Props {
@@ -32,12 +34,14 @@ const voidOrder: Order = {
   clientId: '',
   company: '',
   description: '',
-  signal: '',
+  signal: 0,
+  price: 0,
 };
 
 export const EditOrder = (props: Props) => {
   const { order, onSubmit, onCancel, title, isLoading = false, className } = props;
   const { t } = useTranslate();
+  const { user } = useAuth();
   const [editedOrder, setEditedOrder] = useState<Order>({ ...voidOrder, ...order });
   return (
     <div className={cn(className)}>
@@ -51,7 +55,7 @@ export const EditOrder = (props: Props) => {
           label={<SaveIcon />}
         />
       </div>
-      <div>
+      <div className={cn('content')}>
         <div className={cn('info')}>
           <p className={cn('section-title')}>Cliente</p>
           <div className={cn('info-row')}>
@@ -111,10 +115,22 @@ export const EditOrder = (props: Props) => {
             />
           </div>
           <div className={cn('info-row')}>
-            <p className={cn('info-row__title')}>{t('order-detail.sign')}</p>
-            <Input
+            <p className={cn('info-row__title')}>
+              {t('order-detail.sign')} ({user?.currency || '€'})
+            </p>
+            <InputNumber
               value={editedOrder.signal}
-              onChange={(signal: string) => setEditedOrder((prev) => ({ ...prev, signal }))}
+              onChange={(signal: number) => setEditedOrder((prev) => ({ ...prev, signal }))}
+              className={cn('info-row__content')}
+            />
+          </div>
+          <div className={cn('info-row')}>
+            <p className={cn('info-row__title')}>
+              {t('order-detail.price')} ({user?.currency || '€'})
+            </p>
+            <InputNumber
+              value={editedOrder.price}
+              onChange={(price: number) => setEditedOrder((prev) => ({ ...prev, price }))}
               className={cn('info-row__content')}
             />
           </div>

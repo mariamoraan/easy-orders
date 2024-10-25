@@ -44,7 +44,8 @@ export class OrdersFirebaseRepository implements OrdersRepository {
         clientId: orderData.clientId || '',
         company: orderData.company,
         description: orderData.description || '',
-        signal: orderData.signal || '',
+        signal: orderData.signal || 0,
+        price: orderData.price || 0,
       };
       orders.push(order);
     });
@@ -67,7 +68,8 @@ export class OrdersFirebaseRepository implements OrdersRepository {
         clientId: orderData.clientId || '',
         company: orderData.company,
         description: orderData.description || '',
-        signal: orderData.signal || '',
+        signal: orderData.signal || 0,
+        price: orderData.price || 0,
       };
       return order;
     }
@@ -102,6 +104,7 @@ export class OrdersFirebaseRepository implements OrdersRepository {
       company: order.company || null,
       description: order.description || null,
       signal: order.signal || null,
+      price: order.price || null,
     };
     setDoc(docRef, updatedOrder);
   }

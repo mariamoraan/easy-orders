@@ -13,5 +13,6 @@ export interface Order {
   clientId?: string;
   company: string;
   description: string;
-  signal?: string;
+  signal?: number;
+  price?: number;
 }

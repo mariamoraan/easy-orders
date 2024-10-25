@@ -66,6 +66,7 @@
     "state": "Estado",
     "sign": "Señal",
     "client-address": "Dirección",
-    "client-phone": "Teléfono"
+    "client-phone": "Teléfono",
+    "price": "Precio"
   }
 }

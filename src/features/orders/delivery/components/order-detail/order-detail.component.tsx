@@ -2,6 +2,8 @@ import { bind } from '@/core/styles/bind';
 import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
 import styles from './order-detail.module.css';
 import { Order } from '@/features/orders/domain/order';
+import { StatusTag } from '../status-tag/status-tag.component';
+import { useAuth } from '@/features/auth/delivery/context/auth.context';
 const cn = bind(styles);
 
 interface Props {
@@ -11,6 +13,7 @@ interface Props {
 export const OrderDetail = (props: Props) => {
   const { order } = props;
   const { t } = useTranslate();
+  const { user } = useAuth();
   return (
     <div className={cn('content')}>
       <div className={cn('info')}>
@@ -40,11 +43,21 @@ export const OrderDetail = (props: Props) => {
         </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.state')}</p>
-          <p className={cn('info-row__content')}>{t(`order.status.${order.status}`)}</p>
+          <div className={cn('info-row__content')}>
+            <StatusTag status={order.status} />
+          </div>
         </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.sign')}</p>
-          <p className={cn('info-row__content')}>{order.signal || '-'}</p>
+          <p className={cn('info-row__content')}>
+            {order.signal || '-'} {user?.currency || '€'}
+          </p>
+        </div>
+        <div className={cn('info-row')}>
+          <p className={cn('info-row__title')}>{t('order-detail.price')}</p>
+          <p className={cn('info-row__content')}>
+            {order.price || '-'} {user?.currency || '€'}
+          </p>
         </div>
       </div>
       {order.description && (

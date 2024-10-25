@@ -2,7 +2,7 @@ import { bind } from '@/core/styles/bind';
 import styles from './order-detail.module.css';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { ArrowBackIcon } from '@/core/icons';
+import { ArrowBackIcon, DownloadIcon, EditIcon } from '@/core/icons';
 import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
 import { useEffect, useState } from 'react';
 import { Order } from '@/features/orders/domain/order';
@@ -22,9 +22,13 @@ export const OrderDetailPage = () => {
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPrinting, setIsPrinting] = useState(false);
   const { refetchOrders } = useOrders();
 
   const toggleEdit = () => setIsEditing((prev) => !prev);
+  const downloadOrder = () => {
+    setIsPrinting(true);
+  };
 
   const setup = async (orderId: string) => {
     const res = await OrdersLocator.getFindOrderByIdQuery().handle(orderId);
@@ -46,6 +50,16 @@ export const OrderDetailPage = () => {
     setup(orderId);
   }, [orderId]);
 
+  useEffect(() => {
+    const print = async () => {
+      if (isPrinting) {
+        await window.print();
+        setIsPrinting(false);
+      }
+    };
+    print();
+  }, [isPrinting]);
+
   if (error) {
     return <Navigate to={ProtectedUrls.HOME} />;
   }
@@ -66,6 +80,16 @@ export const OrderDetailPage = () => {
       />
     );
 
+  if (isPrinting)
+    return (
+      <div className={cn('wrapper', 'print-mode')}>
+        <div className={cn('header')}>
+          <h2 className={cn('title')}>{t('order-detail.order')}</h2>
+        </div>
+        <OrderDetail order={order} />
+      </div>
+    );
+
   return (
     <div className={cn('wrapper')}>
       <div className={cn('header')}>
@@ -73,8 +97,9 @@ export const OrderDetailPage = () => {
         <h2 className={cn('title')}>
           {t('order-detail.order')} {order.orderNum}
         </h2>
-        <Dropdown disabled={isEditing}>
-          <ActionButton onClick={toggleEdit} label={'Editar'} />
+        <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing || isPrinting}>
+          <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
+          <ActionButton onClick={downloadOrder} label={'Descargar'} startIcon={<DownloadIcon />} />
         </Dropdown>
       </div>
       <OrderDetail order={order} />

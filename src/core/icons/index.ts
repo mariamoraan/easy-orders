@@ -22,6 +22,8 @@ import { MdOutlineDone } from 'react-icons/md';
 import { GoDotFill } from 'react-icons/go';
 import { FaCheckDouble } from 'react-icons/fa';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { FaRegEdit } from 'react-icons/fa';
+import { GrDownload } from 'react-icons/gr';
 
 export {
   MdOutlineBorderAll as LogoIcon,
@@ -49,4 +51,6 @@ export {
   FaCheckDouble as DeliveredIcon,
   RxCross2 as CancelledIcon,
   GoDotFill as PendantIcon,
+  FaRegEdit as EditIcon,
+  GrDownload as DownloadIcon,
 };

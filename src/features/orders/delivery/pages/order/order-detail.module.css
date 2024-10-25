@@ -2,7 +2,6 @@
   position: relative;
   padding: 24px 16px;
   padding-bottom: 0;
-  margin-bottom: 24px;
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -11,6 +10,10 @@
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   overflow: hidden;
+}
+
+.print-mode {
+  padding: 48px 16px;
 }
 
 .header {
@@ -32,7 +35,12 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  overflow-y: auto;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .info {
@@ -74,5 +82,14 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media print {
+  @page {
+    margin-left: 0.8in;
+    margin-right: 0.8in;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }

@@ -1,4 +1,5 @@
 .content {
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -29,6 +30,8 @@
 }
 
 .info-row__content {
+  display: flex;
+  justify-content: flex-end;
   text-align: end;
   font-weight: 600;
 }
@@ -38,4 +41,5 @@
   white-space: pre-wrap;
   background: rgb(249, 249, 249);
   border-radius: 4px;
+  line-height: 1.5rem;
 }

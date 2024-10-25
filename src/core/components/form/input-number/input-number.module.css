@@ -1,0 +1,14 @@
+.input {
+  padding: 8px 12px;
+}
+
+.input--spaced {
+  margin-bottom: 24px;
+}
+
+.input--outlined {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
