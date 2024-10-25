@@ -13,7 +13,8 @@ interface Props {
   fullWidth?: boolean;
   center?: boolean;
   loading?: boolean;
-  styleType?: 'icon';
+  styleType?: 'icon' | 'outlined-icon';
+  small?: boolean;
 }
 
 export const Button = (props: Props) => {
@@ -28,6 +29,7 @@ export const Button = (props: Props) => {
     center = false,
     loading = false,
     styleType,
+    small,
   } = props;
 
   if (loading)
@@ -38,6 +40,8 @@ export const Button = (props: Props) => {
           'button--full-width': fullWidth,
           'button--center': center,
           'button--icon': styleType === 'icon',
+          'button--outlined-icon': styleType === 'outlined-icon',
+          'button--small': small,
         })}
         onClick={onClick}
       >
@@ -51,6 +55,8 @@ export const Button = (props: Props) => {
         'button--full-width': fullWidth,
         'button--center': center,
         'button--icon': styleType === 'icon',
+        'button--outlined-icon': styleType === 'outlined-icon',
+        'button--small': small,
       })}
       onClick={onClick}
     >

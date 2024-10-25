@@ -20,7 +20,7 @@
 
 .title {
   padding: 0 16px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   font-size: 1.8rem;
   white-space: pre-wrap;
   font-weight: 600;
@@ -33,15 +33,11 @@
 }
 
 .orders-header {
-  margin-bottom: 24px;
   padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-}
-
-.orders-title {
 }
 
 .new-order-link {
@@ -68,12 +64,13 @@
 }
 
 .action-bar {
-  margin-bottom: 12px;
   padding: 0 16px;
-  display: grid;
-  grid-template-columns: 1fr 24px 24px;
+  margin-bottom: 16px;
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
+  overflow: hidden;
 }
 
 .searcher {
@@ -90,15 +87,6 @@
   border: none;
   outline: none;
   background: none;
-}
-
-.filters,
-.new-order-link {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .selector {

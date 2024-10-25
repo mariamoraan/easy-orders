@@ -33,6 +33,14 @@
   color: var(--background-color);
 }
 
+.button--outlined-icon {
+  padding: 8px;
+}
+
+.button--small {
+  padding: 8px 12px;
+}
+
 .loader {
   animation-name: rotate;
   animation-duration: 1s;
