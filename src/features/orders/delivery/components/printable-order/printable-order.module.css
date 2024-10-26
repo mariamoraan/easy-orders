@@ -2,7 +2,7 @@
   position: relative;
   padding: 0;
   padding-bottom: 0;
-  height: 100dvh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   animation-name: appear;
@@ -10,13 +10,6 @@
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   overflow: hidden;
-}
-.actions {
-  padding: 24px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 24px;
 }
 
 .header {
@@ -28,7 +21,6 @@
   gap: 12px;
   align-items: center;
   font-size: larger;
-  background: var(--light-grey);
 }
 
 .title {
