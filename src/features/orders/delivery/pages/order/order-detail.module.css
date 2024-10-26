@@ -12,10 +12,6 @@
   overflow: hidden;
 }
 
-.print-mode {
-  padding: 48px 16px;
-}
-
 .header {
   margin-bottom: 36px;
   display: flex;

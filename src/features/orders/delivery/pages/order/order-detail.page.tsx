@@ -13,10 +13,12 @@ import { OrderDetail } from '../../components/order-detail/order-detail.componen
 import { EditOrder } from '../../components/edit-order/edit-order.component';
 import { useOrders } from '../../context/orders.provider';
 import { OrderSkeleton } from '../../components/order-skeleton/order-skeleton.component';
+import { PrintableOrder } from '../../components/printable-order/printable-order.component';
 const cn = bind(styles);
 
 export const OrderDetailPage = () => {
   const { t } = useTranslate();
+
   const { orderId } = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState<Order | undefined>();
@@ -51,16 +53,6 @@ export const OrderDetailPage = () => {
     setup(orderId);
   }, [orderId]);
 
-  useEffect(() => {
-    const print = async () => {
-      if (isPrinting) {
-        await window.print();
-        setIsPrinting(false);
-      }
-    };
-    print();
-  }, [isPrinting]);
-
   if (error) {
     return <Navigate to={ProtectedUrls.HOME} />;
   }
@@ -81,15 +73,7 @@ export const OrderDetailPage = () => {
       />
     );
 
-  if (isPrinting)
-    return (
-      <div className={cn('wrapper', 'print-mode')}>
-        <div className={cn('header')}>
-          <h2 className={cn('title')}>{t('order-detail.order')}</h2>
-        </div>
-        <OrderDetail order={order} />
-      </div>
-    );
+  if (isPrinting) return <PrintableOrder order={order} closePrintMode={() => setIsPrinting(false)} />;
 
   return (
     <div className={cn('wrapper')}>

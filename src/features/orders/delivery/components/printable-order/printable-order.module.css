@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  padding: 0;
+  padding-bottom: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  animation-name: appear;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  overflow: hidden;
+}
+.actions {
+  padding: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.header {
+  margin-bottom: 36px;
+  padding: 0 16px;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: larger;
+  background: var(--light-grey);
+}
+
+.title {
+  font-weight: 600;
+  font-size: larger;
+  text-align: center;
+}
+
+.content {
+  padding: 0 16px;
+}
