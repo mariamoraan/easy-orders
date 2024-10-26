@@ -10,6 +10,7 @@
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
   overflow: hidden;
+  display: none;
 }
 
 .header {
@@ -31,4 +32,10 @@
 
 .content {
   padding: 0 16px;
+}
+
+@media print {
+  .wrapper {
+    display: flex;
+  }
 }

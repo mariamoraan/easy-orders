@@ -25,12 +25,11 @@ export const OrderDetailPage = () => {
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPrinting, setIsPrinting] = useState(false);
   const { refetchOrders } = useOrders();
 
   const toggleEdit = () => setIsEditing((prev) => !prev);
   const downloadOrder = () => {
-    setIsPrinting(true);
+    window.print();
   };
 
   const setup = async (orderId: string) => {
@@ -73,21 +72,22 @@ export const OrderDetailPage = () => {
       />
     );
 
-  if (isPrinting) return <PrintableOrder order={order} closePrintMode={() => setIsPrinting(false)} />;
-
   return (
-    <div className={cn('wrapper')}>
-      <div className={cn('header')}>
-        <ActionButton onClick={() => navigate(-1)} label={<ArrowBackIcon />} />
-        <h2 className={cn('title')}>
-          {t('order-detail.order')} {order.orderNum}
-        </h2>
-        <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing || isPrinting}>
-          <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
-          <ActionButton onClick={downloadOrder} label={'Descargar'} startIcon={<DownloadIcon />} />
-        </Dropdown>
+    <>
+      <div className={cn('wrapper')}>
+        <div className={cn('header')}>
+          <ActionButton onClick={() => navigate(-1)} label={<ArrowBackIcon />} />
+          <h2 className={cn('title')}>
+            {t('order-detail.order')} {order.orderNum}
+          </h2>
+          <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing}>
+            <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
+            <ActionButton onClick={downloadOrder} label={'Descargar'} startIcon={<DownloadIcon />} />
+          </Dropdown>
+        </div>
+        <OrderDetail order={order} />
       </div>
-      <OrderDetail order={order} />
-    </div>
+      <PrintableOrder order={order} />
+    </>
   );
 };
