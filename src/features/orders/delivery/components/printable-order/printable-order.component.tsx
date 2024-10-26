@@ -21,7 +21,9 @@ export const PrintableOrder = (props: Props) => {
 
   useLayoutEffect(() => {
     printPdf();
-    addEventListener('afterprint', () => closePrintMode());
+    return () => {
+      closePrintMode();
+    };
   }, []);
 
   return (
