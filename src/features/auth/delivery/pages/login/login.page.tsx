@@ -8,9 +8,9 @@ import { useState } from 'react';
 import { Credentials } from '@/features/auth/domain/credentials';
 import styles from './login.module.css';
 import { SubmitButton } from '@/core/components/form/submit-button/submit-button.component';
-import { LogoIcon } from '@/core/icons';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ProtectedUrls, Urls } from '@/core/routing/urls';
+import { Logo } from '@/core/components/logo/logo.component';
 const cn = bind(styles);
 
 export const LoginPage = () => {
@@ -29,8 +29,7 @@ export const LoginPage = () => {
   return (
     <div className={cn('wrapper')}>
       <div className={cn('header')}>
-        <LogoIcon className={cn('logo')} />
-        <p>Easy Orders</p>
+        <Logo />
       </div>
       <h2 className={cn('title')}>{t('login.log-in-with-credentials')}</h2>
       <Form onSubmit={onLogin}>
