@@ -17,7 +17,6 @@ export const PrintableOrder = (props: Props) => {
   const targetRef = useRef<HTMLDivElement>(null);
   const printPdf = async () => {
     window.print();
-    closePrintMode();
   };
 
   useLayoutEffect(() => {
