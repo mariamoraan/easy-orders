@@ -22,6 +22,7 @@ export const PrintableOrder = (props: Props) => {
 
   useLayoutEffect(() => {
     printPdf();
+    setTimeout(closePrintMode, 1000);
   }, []);
 
   return (
