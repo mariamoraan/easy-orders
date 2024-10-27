@@ -39,7 +39,12 @@
     "password-placeholder": "•••••••••••••",
     "already-have-account": "¿Tienes una cuenta?",
     "log-in": "Incia sesión",
-    "sign-up": "Registrate"
+    "sign-up": "Registrate",
+    "ask-for-early-access": "Pedir acceso anticipado"
+  },
+  "early-access": {
+    "thanks": "Tu petición se ha realizado, nos pondremos en contacto contigo lo antes posible",
+    "info": "Esta aplicación aún está restringida para un número reducido de usuarios. Si quieres tener acceso anticipado, introduce tu email y nos pondremos en contacto contigo"
   },
   "home": {
     "greeting": "Hola,\n{{name}}",

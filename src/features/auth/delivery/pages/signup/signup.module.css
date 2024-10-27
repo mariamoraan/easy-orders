@@ -23,9 +23,14 @@
 }
 
 .title {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.info {
+  margin-bottom: 32px;
+  line-height: 1.2;
 }
 
 .error {
