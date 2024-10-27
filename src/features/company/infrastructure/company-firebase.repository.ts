@@ -14,6 +14,7 @@ export class CompanyFirebaseRepository implements CompanyRepository {
           id: companyData.id,
           name: companyData.name,
           ownerId: companyData.ownerId,
+          logoUrl: companyData.logoUrl,
         };
         return company;
       } else {

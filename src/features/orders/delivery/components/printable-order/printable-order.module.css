@@ -3,7 +3,6 @@
   padding: 0;
   padding-bottom: 0;
   width: 100%;
-  display: flex;
   flex-direction: column;
   animation-name: appear;
   animation-duration: 200ms;
@@ -13,14 +12,21 @@
   display: none;
 }
 
+.logo {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
 .header {
-  margin-bottom: 36px;
+  margin-bottom: 0px;
   padding: 0 16px;
   min-height: 200px;
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
   font-size: larger;
 }
 

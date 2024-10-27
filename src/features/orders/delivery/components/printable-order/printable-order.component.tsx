@@ -2,8 +2,8 @@ import { bind } from '@/core/styles/bind';
 import styles from './printable-order.module.css';
 import { Order } from '@/features/orders/domain/order';
 import { OrderDetail } from '../order-detail/order-detail.component';
-import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
 import { useRef } from 'react';
+import { useCompany } from '@/features/company/delivery/context/company.provider';
 const cn = bind(styles);
 
 interface Props {
@@ -13,13 +13,14 @@ interface Props {
 
 export const PrintableOrder = (props: Props) => {
   const { order, className } = props;
-  const { t } = useTranslate();
+  const { company } = useCompany();
   const targetRef = useRef<HTMLDivElement>(null);
 
   return (
     <div ref={targetRef} className={cn('wrapper', className)}>
       <div className={cn('header')}>
-        <h2 className={cn('title')}>{t('order-detail.order')}</h2>
+        {company.logoUrl && <img className={cn('logo')} src={company.logoUrl} />}
+        <h2 className={cn('title')}>{company.name}</h2>
       </div>
       <div className={cn('content')}>
         <OrderDetail order={order} />
