@@ -181,7 +181,6 @@
 .order-title {
   display: flex;
   align-items: center;
-  line-height: 1.5rem;
   gap: 8px;
   overflow: hidden;
 }

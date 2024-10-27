@@ -13,7 +13,12 @@ import { OrderDetail } from '../../components/order-detail/order-detail.componen
 import { EditOrder } from '../../components/edit-order/edit-order.component';
 import { useOrders } from '../../context/orders.provider';
 import { OrderSkeleton } from '../../components/order-skeleton/order-skeleton.component';
+import { pdf } from '@react-pdf/renderer';
+import { useCompany } from '@/features/company/delivery/context/company.provider';
+import { useAuth } from '@/features/auth/delivery/context/auth.context';
+import { saveAs } from 'file-saver';
 import { PrintableOrder } from '../../components/printable-order/printable-order.component';
+
 const cn = bind(styles);
 
 export const OrderDetailPage = () => {
@@ -21,6 +26,9 @@ export const OrderDetailPage = () => {
 
   const { orderId } = useParams();
   const navigate = useNavigate();
+  const { company } = useCompany();
+  const { user } = useAuth();
+
   const [order, setOrder] = useState<Order | undefined>();
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -28,10 +36,6 @@ export const OrderDetailPage = () => {
   const { refetchOrders } = useOrders();
 
   const toggleEdit = () => setIsEditing((prev) => !prev);
-  const downloadOrder = () => {
-    window.print();
-  };
-
   const setup = async (orderId: string) => {
     const res = await OrdersLocator.getFindOrderByIdQuery().handle(orderId);
     if (!res) setError('Order Not Exists');
@@ -47,6 +51,13 @@ export const OrderDetailPage = () => {
     setIsLoading(false);
   };
 
+  const onDownloadOrder = async (callback?: () => void) => {
+    if (!order || !company || !user) return;
+    const blob = await pdf(<PrintableOrder order={order} company={company} user={user} />).toBlob();
+    saveAs(blob, 'my-name');
+    callback && callback();
+  };
+
   useEffect(() => {
     if (!orderId) return;
     setup(orderId);
@@ -56,7 +67,7 @@ export const OrderDetailPage = () => {
     return <Navigate to={ProtectedUrls.HOME} />;
   }
 
-  if (!order) {
+  if (!order || !company || !user) {
     return <OrderSkeleton />;
   }
 
@@ -73,32 +84,32 @@ export const OrderDetailPage = () => {
     );
 
   return (
-    <>
-      <div className={cn('wrapper')}>
-        <div className={cn('header')}>
-          <ActionButton onClick={() => navigate(-1)} label={<ArrowBackIcon />} />
-          <h2 className={cn('title')}>
-            {t('order-detail.order')} {order.orderNum}
-          </h2>
-          <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing}>
-            {({ setIsOpen }) => (
-              <>
-                <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
-                <ActionButton
-                  onClick={() => {
-                    downloadOrder();
-                    setIsOpen(false);
-                  }}
-                  label={'Descargar'}
-                  startIcon={<DownloadIcon />}
-                />
-              </>
-            )}
-          </Dropdown>
-        </div>
-        <OrderDetail order={order} />
+    <div className={cn('wrapper')}>
+      <div className={cn('header')}>
+        <ActionButton onClick={() => navigate(-1)} label={<ArrowBackIcon />} />
+        <h2 className={cn('title')}>
+          {t('order-detail.order')} {order.orderNum}
+        </h2>
+        <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing}>
+          {({ setIsOpen }) => (
+            <>
+              <ActionButton
+                className={cn('dropdown__option')}
+                onClick={toggleEdit}
+                label={'Editar'}
+                endIcon={<EditIcon />}
+              />
+              <ActionButton
+                className={cn('dropdown__option')}
+                onClick={() => onDownloadOrder(() => setIsOpen(false))}
+                label={'Descargar'}
+                endIcon={<DownloadIcon />}
+              />
+            </>
+          )}
+        </Dropdown>
       </div>
-      <PrintableOrder order={order} />
-    </>
+      <OrderDetail order={order} />
+    </div>
   );
 };

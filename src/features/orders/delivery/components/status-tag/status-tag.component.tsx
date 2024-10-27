@@ -9,7 +9,14 @@ interface Props {
   status: OrderStatus;
 }
 
-const OrderStatusIcon: { [key in OrderStatus]: React.ReactNode } = {
+export const StatusColors: { [key in OrderStatus]: string } = {
+  [OrderStatus.PENDING]: 'orange',
+  [OrderStatus.READY]: 'purple',
+  [OrderStatus.DELIVERED]: 'green',
+  [OrderStatus.CANCELLED]: 'red',
+};
+
+export const OrderStatusIcon: { [key in OrderStatus]: React.ReactNode } = {
   [OrderStatus.PENDING]: <PendantIcon />,
   [OrderStatus.READY]: <ReadyIcon />,
   [OrderStatus.DELIVERED]: <DeliveredIcon />,

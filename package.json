@@ -14,8 +14,10 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.0.0",
     "@testing-library/cypress": "^10.0.2",
     "classnames": "^2.5.1",
+    "file-saver": "^2.0.5",
     "firebase": "^10.14.1",
     "husky": "^9.0.11",
     "i18next": "^23.11.5",
@@ -33,6 +35,7 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@testing-library/react": "^16.0.0",
+    "@types/file-saver": "^2.0.7",
     "@types/jest": "^29.5.12",
     "@types/luxon": "^3.4.2",
     "@types/react": "^18.2.66",

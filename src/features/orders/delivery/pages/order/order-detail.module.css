@@ -27,6 +27,16 @@
   text-align: center;
 }
 
+.dropdown__option {
+  color: var(--on-background-color);
+  max-width: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -78,17 +88,5 @@
   }
   to {
     opacity: 1;
-  }
-}
-
-@media print {
-  @page {
-    margin-left: 0.8in;
-    margin-right: 0.8in;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .wrapper {
-    display: none;
   }
 }
