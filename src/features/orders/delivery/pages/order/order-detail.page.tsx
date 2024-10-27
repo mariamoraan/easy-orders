@@ -54,7 +54,7 @@ export const OrderDetailPage = () => {
   const onDownloadOrder = async (callback?: () => void) => {
     if (!order || !company || !user) return;
     const blob = await pdf(<PrintableOrder order={order} company={company} user={user} />).toBlob();
-    saveAs(blob, 'my-name');
+    saveAs(blob, `pedido-${order.orderNum}`);
     callback && callback();
   };
 
