@@ -3,8 +3,15 @@ import { User } from '@/features/auth/domain/user';
 import { Company } from '@/features/company/domain/company';
 import { Order } from '@/features/orders/domain/order';
 import { getTotalPrice } from '@/features/orders/domain/utils';
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
 import { OrderStatusIcon, StatusColors } from '../status-tag/status-tag.component';
+import MontserratFont from './Montserrat-Medium.ttf';
+import MontserratRegularFont from './Montserrat-Regular.ttf';
+
+Font.register({
+  family: 'Montserrat',
+  fonts: [{ src: MontserratRegularFont }, { src: MontserratFont, fontWeight: 'bold' }],
+});
 
 const styles = StyleSheet.create({
   page: {
