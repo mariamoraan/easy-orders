@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     gap: '24pt',
     fontSize: '24pt',
     borderBottom: '1px solid #e0e0e0',
+    fontWeight: 'bold',
   },
   logo: {
     height: '42pt',
