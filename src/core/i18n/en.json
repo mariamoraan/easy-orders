@@ -67,6 +67,7 @@
     "sign": "Señal",
     "client-address": "Dirección",
     "client-phone": "Teléfono",
-    "price": "Precio"
+    "price": "Precio",
+    "total": "Total"
   }
 }

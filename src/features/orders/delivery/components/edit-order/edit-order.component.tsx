@@ -11,6 +11,7 @@ import { ArrowBackIcon, SaveIcon } from '@/core/icons';
 import { StatusSelector } from '../status-selector/status-selector.component';
 import { InputNumber } from '@/core/components/form/input-number/input-number.component';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
+import { getTotalPrice } from '@/features/orders/domain/utils';
 const cn = bind(styles);
 
 interface Props {
@@ -132,6 +133,16 @@ export const EditOrder = (props: Props) => {
               value={editedOrder.price}
               onChange={(price: number) => setEditedOrder((prev) => ({ ...prev, price }))}
               className={cn('info-row__content')}
+            />
+          </div>
+          <div className={cn('info-row')}>
+            <p className={cn('info-row__title')}>
+              {t('order-detail.total')} ({user?.currency || '€'})
+            </p>
+            <InputNumber
+              value={getTotalPrice({ price: editedOrder.price, signal: editedOrder.signal })}
+              className={cn('info-row__content')}
+              disabled
             />
           </div>
         </div>
