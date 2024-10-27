@@ -16,7 +16,6 @@ import { OrderSkeleton } from '../../components/order-skeleton/order-skeleton.co
 import { pdf } from '@react-pdf/renderer';
 import { useCompany } from '@/features/company/delivery/context/company.provider';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
-import { saveAs } from 'file-saver';
 import { PrintableOrder } from '../../components/printable-order/printable-order.component';
 
 const cn = bind(styles);
@@ -49,6 +48,18 @@ export const OrderDetailPage = () => {
     refetchOrders();
     setIsEditing(false);
     setIsLoading(false);
+  };
+
+  const saveAs = async (blob: Blob, fileName: string) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+    document.body.removeChild(a);
   };
 
   const onDownloadOrder = async (callback?: () => void) => {
