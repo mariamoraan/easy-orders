@@ -5,9 +5,6 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 
 const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
-  workbox: {
-    maximumFileSizeToCacheInBytes: 3 * 1024 ** 2,
-  },
   manifest: {
     name: 'Easy Orders',
     short_name: 'Easy Orders',
