@@ -81,8 +81,19 @@ export const OrderDetailPage = () => {
             {t('order-detail.order')} {order.orderNum}
           </h2>
           <Dropdown dropdownClassName={cn('dropdown')} disabled={isEditing}>
-            <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
-            <ActionButton onClick={downloadOrder} label={'Descargar'} startIcon={<DownloadIcon />} />
+            {({ setIsOpen }) => (
+              <>
+                <ActionButton onClick={toggleEdit} label={'Editar'} startIcon={<EditIcon />} />
+                <ActionButton
+                  onClick={() => {
+                    downloadOrder();
+                    setIsOpen(false);
+                  }}
+                  label={'Descargar'}
+                  startIcon={<DownloadIcon />}
+                />
+              </>
+            )}
           </Dropdown>
         </div>
         <OrderDetail order={order} />
