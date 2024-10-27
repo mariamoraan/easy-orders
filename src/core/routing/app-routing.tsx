@@ -13,11 +13,11 @@ import { FiltersPage } from '@/features/orders/delivery/pages/filters/filters.pa
 
 export const AppRouting = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <App />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <ProtectedRoutesWrapper />,
         children: [
           { path: ProtectedUrls.HOME, element: <HomePage /> },

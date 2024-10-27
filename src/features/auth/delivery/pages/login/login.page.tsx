@@ -23,7 +23,7 @@ export const LoginPage = () => {
     await login(credentials);
     navigate(ProtectedUrls.HOME);
   };
-
+  console.log('login p`ge');
   if (isAuthenticated) return <Navigate to={ProtectedUrls.HOME} />;
 
   return (

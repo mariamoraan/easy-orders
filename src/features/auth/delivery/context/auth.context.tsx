@@ -18,7 +18,7 @@ interface AuthContextProps {
 }
 
 const AuthContext = createContext<AuthContextProps>({
-  isAuthenticated: false,
+  isAuthenticated: true,
   isLoading: false,
   logout: function (): Promise<void> {
     throw new Error('Function not implemented.');
@@ -35,7 +35,7 @@ const AuthContext = createContext<AuthContextProps>({
 });
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [user, setUser] = useState<User | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const [errorCode, setErrorCode] = useState<string | ERROR_CODES | undefined>();
