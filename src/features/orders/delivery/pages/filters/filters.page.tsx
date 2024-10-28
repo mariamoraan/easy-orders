@@ -1,7 +1,7 @@
 import { bind } from '@/core/styles/bind';
 import styles from './filters.module.css';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { ArrowBackIcon } from '@/core/icons';
+import { CancelIcon, SaveIcon } from '@/core/icons';
 import { useNavigate } from 'react-router-dom';
 import { OrderStatus } from '@/features/orders/domain/order-status';
 import { StatusTag } from '../../components/status-tag/status-tag.component';
@@ -15,6 +15,7 @@ type DeliveryDateFilters = 'TODAY' | 'TOMORROW' | 'ALL';
 export const FiltersPage = () => {
   const navigate = useNavigate();
   const { filters, setFilters } = useOrders();
+  const [initialFilters] = useState(filters);
   const [selectedDeliveryDateFilters, setSelectedDeliveryDateFilters] = useState<DeliveryDateFilters[]>([]);
   const toggleStatus = (status: OrderStatus) => {
     const isInStatusFilters = filters.status.includes(status);
@@ -124,8 +125,15 @@ export const FiltersPage = () => {
   return (
     <div className={cn('wrapper')}>
       <div className={cn('header')}>
-        <ActionButton onClick={() => navigate(-1)} label={<ArrowBackIcon />} />
+        <ActionButton
+          onClick={() => {
+            setFilters(initialFilters);
+            navigate(-1);
+          }}
+          label={<CancelIcon />}
+        />
         <h3 className={cn('title')}>Filtros</h3>
+        <ActionButton onClick={() => navigate(-1)} label={<SaveIcon />} />
       </div>
       <div className={cn('content')}>
         <div>

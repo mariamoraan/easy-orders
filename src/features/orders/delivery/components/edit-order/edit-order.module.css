@@ -47,6 +47,12 @@
   outline: none;
 }
 
+.deliver-date-input {
+  padding: 4px 8px;
+  width: 100%;
+  justify-self: flex-end;
+}
+
 .disabled {
   color: black;
 }

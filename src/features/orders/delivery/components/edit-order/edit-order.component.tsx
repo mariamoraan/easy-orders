@@ -7,7 +7,7 @@ import { Input } from '@/core/components/form/input/input.component';
 import { useState } from 'react';
 import { DateTime } from '@/core/datetime/datetime';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { ArrowBackIcon, SaveIcon } from '@/core/icons';
+import { CancelIcon, SaveIcon } from '@/core/icons';
 import { StatusSelector } from '../status-selector/status-selector.component';
 import { InputNumber } from '@/core/components/form/input-number/input-number.component';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
@@ -47,7 +47,7 @@ export const EditOrder = (props: Props) => {
   return (
     <div className={cn(className)}>
       <div className={cn('header')}>
-        <ActionButton onClick={onCancel} label={<ArrowBackIcon />} />
+        <ActionButton onClick={onCancel} label={<CancelIcon />} />
         <h2 className={cn('title')}>{title}</h2>
         <ActionButton
           type="button"
@@ -94,6 +94,7 @@ export const EditOrder = (props: Props) => {
             <p className={cn('info-row__title')}>{t('order-detail.daliver-date')}</p>
             <input
               type="date"
+              className={cn('deliver-date-input')}
               value={editedOrder.deliverDate.toFormat('yyyy-MM-dd') || DateTime.fromNow().toFormat('yyyy-MM-dd')}
               onChange={(e) =>
                 setEditedOrder((prev) => ({
