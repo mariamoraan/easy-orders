@@ -10,7 +10,7 @@ import { DateTime } from '@/core/datetime/datetime';
 import { useEffect, useState } from 'react';
 const cn = bind(styles);
 
-type DeliveryDateFilters = 'TODAY' | 'TOMORROW' | 'ALL' | 'CUSTOM';
+type DeliveryDateFilters = 'TODAY' | 'TOMORROW' | 'ALL' | 'CUSTOM' | 'FROM-TODAY';
 
 export const FiltersPage = () => {
   const navigate = useNavigate();
@@ -65,6 +65,15 @@ export const FiltersPage = () => {
       setSelectedDeliveryDateFilters(['TOMORROW']);
       return;
     }
+    // FROM TODAY
+    if (
+      filters.deliveryDate.from &&
+      !filters.deliveryDate.to &&
+      filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().toIsoDate()
+    ) {
+      setSelectedDeliveryDateFilters(['FROM-TODAY']);
+      return;
+    }
     // CUSTOM
     setCustomFromDate(filters.deliveryDate.from);
     setCustomToDate(filters.deliveryDate.to);
@@ -82,13 +91,17 @@ export const FiltersPage = () => {
         (deliveryDateFilter) => deliveryDateFilter !== date,
       );
     }
-    if (!selectedDeliveryDateFilters.includes(date) && date !== 'ALL' && date !== 'CUSTOM') {
+    if (!selectedDeliveryDateFilters.includes(date) && date !== 'ALL' && date !== 'CUSTOM' && date !== 'FROM-TODAY') {
       currentSelectedDeliveryDateFilters = [
         ...currentSelectedDeliveryDateFilters.filter(
-          (deliveryDateFilter) => deliveryDateFilter !== 'ALL' && deliveryDateFilter !== 'CUSTOM',
+          (deliveryDateFilter) =>
+            deliveryDateFilter !== 'ALL' && deliveryDateFilter !== 'CUSTOM' && deliveryDateFilter !== 'FROM-TODAY',
         ),
         date,
       ];
+    }
+    if (!selectedDeliveryDateFilters.includes(date) && date === 'FROM-TODAY') {
+      currentSelectedDeliveryDateFilters = ['FROM-TODAY'];
     }
     if (!selectedDeliveryDateFilters.includes(date) && date === 'ALL') {
       currentSelectedDeliveryDateFilters = ['ALL'];
@@ -131,6 +144,17 @@ export const FiltersPage = () => {
         deliveryDate: {
           from: DateTime.fromIso(DateTime.fromNow().plus(1).toIsoDate() || '') ?? undefined,
           to: DateTime.fromIso(DateTime.fromNow().plus(2).toIsoDate() || '') ?? undefined,
+        },
+      }));
+    }
+
+    // FROM TODAY
+    if (currentSelectedDeliveryDateFilters.includes('FROM-TODAY')) {
+      setFilters((prev) => ({
+        ...prev,
+        deliveryDate: {
+          from: DateTime.fromIso(DateTime.fromNow().toIsoDate() || '') ?? undefined,
+          to: undefined,
         },
       }));
     }
@@ -203,6 +227,13 @@ export const FiltersPage = () => {
               })}
               label="Mañana"
               onClick={() => selectDeliveryDate('TOMORROW')}
+            />
+            <ActionButton
+              className={cn('selectable-group__item', {
+                'selectable-group__item--selected': selectedDeliveryDateFilters.includes('FROM-TODAY'),
+              })}
+              label="Desde hoy"
+              onClick={() => selectDeliveryDate('FROM-TODAY')}
             />
             <ActionButton
               className={cn('selectable-group__item', {

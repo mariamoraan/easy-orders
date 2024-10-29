@@ -42,7 +42,7 @@ export const OrdersProvider = ({ children }: React.PropsWithChildren) => {
   const [filters, setFilters] = useState<OrdersFilters>({
     status: [OrderStatus.DELIVERED, OrderStatus.PENDING, OrderStatus.READY],
     deliveryDate: {
-      from: DateTime.fromNow(),
+      from: DateTime.fromIso(DateTime.fromNow().toIsoDate() || '') || undefined,
     },
   });
   const refetchOrders = async () => {
