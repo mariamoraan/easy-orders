@@ -10,13 +10,15 @@ import { DateTime } from '@/core/datetime/datetime';
 import { useEffect, useState } from 'react';
 const cn = bind(styles);
 
-type DeliveryDateFilters = 'TODAY' | 'TOMORROW' | 'ALL';
+type DeliveryDateFilters = 'TODAY' | 'TOMORROW' | 'ALL' | 'CUSTOM';
 
 export const FiltersPage = () => {
   const navigate = useNavigate();
   const { filters, setFilters } = useOrders();
   const [initialFilters] = useState(filters);
   const [selectedDeliveryDateFilters, setSelectedDeliveryDateFilters] = useState<DeliveryDateFilters[]>([]);
+  const [customFromDate, setCustomFromDate] = useState<DateTime | undefined>();
+  const [customToDate, setCustomToDate] = useState<DateTime | undefined>();
   const toggleStatus = (status: OrderStatus) => {
     const isInStatusFilters = filters.status.includes(status);
     if (isInStatusFilters)
@@ -33,72 +35,69 @@ export const FiltersPage = () => {
       setSelectedDeliveryDateFilters(['ALL']);
       return;
     }
-    // TODAY
-    if (
-      filters.deliveryDate.from &&
-      filters.deliveryDate.to &&
-      filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().toIsoDate() &&
-      filters.deliveryDate.to.toIsoDate() === DateTime.fromNow().plus(1).toIsoDate()
-    )
-      setSelectedDeliveryDateFilters(['TODAY']);
-    // TOMORROW
-    if (
-      filters.deliveryDate.from &&
-      filters.deliveryDate.to &&
-      filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().plus(1).toIsoDate() &&
-      filters.deliveryDate.to.toIsoDate() === DateTime.fromNow().plus(2).toIsoDate()
-    )
-      setSelectedDeliveryDateFilters(['TOMORROW']);
     // TODAY & TOMORROW
     if (
       filters.deliveryDate.from &&
       filters.deliveryDate.to &&
       filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().toIsoDate() &&
       filters.deliveryDate.to.toIsoDate() === DateTime.fromNow().plus(2).toIsoDate()
-    )
+    ) {
       setSelectedDeliveryDateFilters(['TODAY', 'TOMORROW']);
+      return;
+    }
+    // TODAY
+    if (
+      filters.deliveryDate.from &&
+      filters.deliveryDate.to &&
+      filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().toIsoDate() &&
+      filters.deliveryDate.to.toIsoDate() === DateTime.fromNow().plus(1).toIsoDate()
+    ) {
+      setSelectedDeliveryDateFilters(['TODAY']);
+      return;
+    }
+    // TOMORROW
+    if (
+      filters.deliveryDate.from &&
+      filters.deliveryDate.to &&
+      filters.deliveryDate.from.toIsoDate() === DateTime.fromNow().plus(1).toIsoDate() &&
+      filters.deliveryDate.to.toIsoDate() === DateTime.fromNow().plus(2).toIsoDate()
+    ) {
+      setSelectedDeliveryDateFilters(['TOMORROW']);
+      return;
+    }
+    // CUSTOM
+    setCustomFromDate(filters.deliveryDate.from);
+    setCustomToDate(filters.deliveryDate.to);
+    setSelectedDeliveryDateFilters(['CUSTOM']);
   }, []);
 
   const selectDeliveryDate = (date: DeliveryDateFilters) => {
     let currentSelectedDeliveryDateFilters = [...selectedDeliveryDateFilters];
-    if (selectedDeliveryDateFilters.includes(date)) {
+    if (date !== 'CUSTOM') {
+      setCustomFromDate(undefined);
+      setCustomToDate(undefined);
+    }
+    if (date !== 'CUSTOM' && selectedDeliveryDateFilters.includes(date)) {
       currentSelectedDeliveryDateFilters = currentSelectedDeliveryDateFilters.filter(
         (deliveryDateFilter) => deliveryDateFilter !== date,
       );
     }
-    if (!selectedDeliveryDateFilters.includes(date) && date !== 'ALL') {
+    if (!selectedDeliveryDateFilters.includes(date) && date !== 'ALL' && date !== 'CUSTOM') {
       currentSelectedDeliveryDateFilters = [
-        ...currentSelectedDeliveryDateFilters.filter((deliveryDateFilter) => deliveryDateFilter !== 'ALL'),
+        ...currentSelectedDeliveryDateFilters.filter(
+          (deliveryDateFilter) => deliveryDateFilter !== 'ALL' && deliveryDateFilter !== 'CUSTOM',
+        ),
         date,
       ];
     }
     if (!selectedDeliveryDateFilters.includes(date) && date === 'ALL') {
       currentSelectedDeliveryDateFilters = ['ALL'];
     }
+    if (!selectedDeliveryDateFilters.includes(date) && date === 'CUSTOM') {
+      currentSelectedDeliveryDateFilters = ['CUSTOM'];
+    }
     if (!currentSelectedDeliveryDateFilters.length) {
       currentSelectedDeliveryDateFilters = ['ALL'];
-    }
-
-    // TODAY
-    if (currentSelectedDeliveryDateFilters.includes('TODAY')) {
-      setFilters((prev) => ({
-        ...prev,
-        deliveryDate: {
-          from: DateTime.fromIso(DateTime.fromNow().toIsoDate() || '') ?? undefined,
-          to: DateTime.fromIso(DateTime.fromNow().plus(1).toIsoDate() || '') ?? undefined,
-        },
-      }));
-    }
-
-    // TOMORROW
-    if (currentSelectedDeliveryDateFilters.includes('TOMORROW')) {
-      setFilters((prev) => ({
-        ...prev,
-        deliveryDate: {
-          from: DateTime.fromIso(DateTime.fromNow().plus(1).toIsoDate() || '') ?? undefined,
-          to: DateTime.fromIso(DateTime.fromNow().plus(2).toIsoDate() || '') ?? undefined,
-        },
-      }));
     }
 
     // TODAY & TOMORROW
@@ -114,14 +113,50 @@ export const FiltersPage = () => {
         },
       }));
     }
+    // TODAY
+    else if (currentSelectedDeliveryDateFilters.includes('TODAY')) {
+      setFilters((prev) => ({
+        ...prev,
+        deliveryDate: {
+          from: DateTime.fromIso(DateTime.fromNow().toIsoDate() || '') ?? undefined,
+          to: DateTime.fromIso(DateTime.fromNow().plus(1).toIsoDate() || '') ?? undefined,
+        },
+      }));
+    }
+
+    // TOMORROW
+    else if (currentSelectedDeliveryDateFilters.includes('TOMORROW')) {
+      setFilters((prev) => ({
+        ...prev,
+        deliveryDate: {
+          from: DateTime.fromIso(DateTime.fromNow().plus(1).toIsoDate() || '') ?? undefined,
+          to: DateTime.fromIso(DateTime.fromNow().plus(2).toIsoDate() || '') ?? undefined,
+        },
+      }));
+    }
+
+    // CUSTOM
+    if (currentSelectedDeliveryDateFilters.includes('CUSTOM')) {
+      setFilters((prev) => ({
+        ...prev,
+        deliveryDate: {
+          from: customFromDate,
+          to: customToDate,
+        },
+      }));
+    }
 
     // ALL
     if (currentSelectedDeliveryDateFilters.includes('ALL')) {
       setFilters((prev) => ({ ...prev, deliveryDate: {} }));
     }
-
     setSelectedDeliveryDateFilters(currentSelectedDeliveryDateFilters);
   };
+
+  useEffect(() => {
+    if (!customFromDate && !customToDate) return;
+    selectDeliveryDate('CUSTOM');
+  }, [customFromDate, customToDate]);
   return (
     <div className={cn('wrapper')}>
       <div className={cn('header')}>
@@ -171,6 +206,13 @@ export const FiltersPage = () => {
             />
             <ActionButton
               className={cn('selectable-group__item', {
+                'selectable-group__item--selected': selectedDeliveryDateFilters.includes('CUSTOM'),
+              })}
+              label="Custom"
+              onClick={() => selectDeliveryDate('CUSTOM')}
+            />
+            <ActionButton
+              className={cn('selectable-group__item', {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('ALL'),
               })}
               label="Todas"
@@ -178,6 +220,32 @@ export const FiltersPage = () => {
             />
           </div>
         </div>
+        {selectedDeliveryDateFilters.includes('CUSTOM') && (
+          <div className={cn('custom-date-selector')}>
+            <div className={cn('custom-date-selector__field')}>
+              <label>From</label>
+              <input
+                type="date"
+                value={customFromDate?.toFormat('yyyy-MM-dd') || ''}
+                onChange={(e) => {
+                  setCustomFromDate(DateTime.fromIso(new Date(e.target.value).toISOString()));
+                }}
+              />
+              <ActionButton type="button" onClick={() => setCustomFromDate(undefined)} label={<CancelIcon />} />
+            </div>
+            <div className={cn('custom-date-selector__field')}>
+              <label>To</label>
+              <input
+                type="date"
+                value={customToDate?.toFormat('yyyy-MM-dd') || ''}
+                onChange={(e) => {
+                  setCustomToDate(DateTime.fromIso(new Date(e.target.value).toISOString()));
+                }}
+              />
+              <ActionButton type="button" onClick={() => setCustomToDate(undefined)} label={<CancelIcon />} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

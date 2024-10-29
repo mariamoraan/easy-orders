@@ -4,6 +4,7 @@ import { useCompany } from '@/features/company/delivery/context/company.provider
 import { OrdersLocator } from '../locator';
 import { OrdersFilters } from '../../domain/orders-filters';
 import { OrderStatus } from '../../domain/order-status';
+import { DateTime } from '@/core/datetime/datetime';
 
 interface IOrdersContext {
   count: number;
@@ -24,8 +25,10 @@ export const OrdersContext = createContext<IOrdersContext>({
     throw new Error('Function not implemented.');
   },
   filters: {
-    status: [],
-    deliveryDate: {},
+    status: [OrderStatus.DELIVERED, OrderStatus.PENDING, OrderStatus.READY],
+    deliveryDate: {
+      from: DateTime.fromNow(),
+    },
   },
   setFilters: function (): void {
     throw new Error('Function not implemented.');
@@ -37,8 +40,10 @@ export const OrdersProvider = ({ children }: React.PropsWithChildren) => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [count, setCount] = useState<number>(0);
   const [filters, setFilters] = useState<OrdersFilters>({
-    status: Object.values(OrderStatus),
-    deliveryDate: {},
+    status: [OrderStatus.DELIVERED, OrderStatus.PENDING, OrderStatus.READY],
+    deliveryDate: {
+      from: DateTime.fromNow(),
+    },
   });
   const refetchOrders = async () => {
     const companyOrders = await OrdersLocator.getFindAllOrdersQuery().handle(company.id, filters);

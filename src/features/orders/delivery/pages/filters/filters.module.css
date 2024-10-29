@@ -53,6 +53,26 @@
   border-color: var(--dark-grey);
 }
 
+.custom-date-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.custom-date-selector__field {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.custom-date-selector__field > *:nth-child(3) {
+  justify-self: flex-end;
+}
+
+.custom-date-selector__field > input {
+  padding: 4px 8px;
+}
+
 @keyframes appear {
   from {
     opacity: 0;
