@@ -25,7 +25,7 @@ import { IoIosAddCircleOutline } from 'react-icons/io';
 import { FaRegEdit } from 'react-icons/fa';
 import { GrDownload } from 'react-icons/gr';
 import { GoGear } from 'react-icons/go';
-import { PiDotsNineThin } from 'react-icons/pi';
+import { PiDotsNine } from 'react-icons/pi';
 import { GoDot } from 'react-icons/go';
 
 export {
@@ -59,5 +59,5 @@ export {
   FaRegEdit as EditIcon,
   GrDownload as DownloadIcon,
   GoGear as GearIcon,
-  PiDotsNineThin as DotsNineThinIcon,
+  PiDotsNine as DotsNineIcon,
 };

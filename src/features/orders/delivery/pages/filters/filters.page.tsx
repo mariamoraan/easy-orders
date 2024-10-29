@@ -1,7 +1,7 @@
 import { bind } from '@/core/styles/bind';
 import styles from './filters.module.css';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { ArrowForwardIcon, CancelIcon, DotFillIcon, DotIcon, DotsNineThinIcon, GearIcon, SaveIcon } from '@/core/icons';
+import { ArrowForwardIcon, CancelIcon, DotFillIcon, DotIcon, DotsNineIcon, GearIcon, SaveIcon } from '@/core/icons';
 import { useNavigate } from 'react-router-dom';
 import { OrderStatus } from '@/features/orders/domain/order-status';
 import { StatusTag } from '../../components/status-tag/status-tag.component';
@@ -243,7 +243,7 @@ export const FiltersPage = () => {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('ALL'),
               })}
               label="Todas"
-              startIcon={<DotsNineThinIcon />}
+              startIcon={<DotsNineIcon />}
               onClick={() => selectDeliveryDate('ALL')}
             />
             <ActionButton
