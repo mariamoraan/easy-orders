@@ -24,6 +24,9 @@ import { FaCheckDouble } from 'react-icons/fa';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { FaRegEdit } from 'react-icons/fa';
 import { GrDownload } from 'react-icons/gr';
+import { GoGear } from 'react-icons/go';
+import { PiDotsNineThin } from 'react-icons/pi';
+import { GoDot } from 'react-icons/go';
 
 export {
   MdOutlineBorderAll as LogoIcon,
@@ -51,6 +54,10 @@ export {
   FaCheckDouble as DeliveredIcon,
   RxCross2 as CancelledIcon,
   GoDotFill as PendantIcon,
+  GoDotFill as DotFillIcon,
+  GoDot as DotIcon,
   FaRegEdit as EditIcon,
   GrDownload as DownloadIcon,
+  GoGear as GearIcon,
+  PiDotsNineThin as DotsNineThinIcon,
 };

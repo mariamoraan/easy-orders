@@ -1,7 +1,7 @@
 import { bind } from '@/core/styles/bind';
 import styles from './filters.module.css';
 import { ActionButton } from '@/core/components/action-button/action-button.component';
-import { CancelIcon, SaveIcon } from '@/core/icons';
+import { ArrowForwardIcon, CancelIcon, DotFillIcon, DotIcon, DotsNineThinIcon, GearIcon, SaveIcon } from '@/core/icons';
 import { useNavigate } from 'react-router-dom';
 import { OrderStatus } from '@/features/orders/domain/order-status';
 import { StatusTag } from '../../components/status-tag/status-tag.component';
@@ -219,6 +219,7 @@ export const FiltersPage = () => {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('TODAY'),
               })}
               label="Hoy"
+              startIcon={<DotFillIcon />}
               onClick={() => selectDeliveryDate('TODAY')}
             />
             <ActionButton
@@ -226,6 +227,7 @@ export const FiltersPage = () => {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('TOMORROW'),
               })}
               label="Mañana"
+              startIcon={<ArrowForwardIcon />}
               onClick={() => selectDeliveryDate('TOMORROW')}
             />
             <ActionButton
@@ -233,21 +235,24 @@ export const FiltersPage = () => {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('FROM-TODAY'),
               })}
               label="Desde hoy"
+              startIcon={<DotIcon />}
               onClick={() => selectDeliveryDate('FROM-TODAY')}
-            />
-            <ActionButton
-              className={cn('selectable-group__item', {
-                'selectable-group__item--selected': selectedDeliveryDateFilters.includes('CUSTOM'),
-              })}
-              label="Custom"
-              onClick={() => selectDeliveryDate('CUSTOM')}
             />
             <ActionButton
               className={cn('selectable-group__item', {
                 'selectable-group__item--selected': selectedDeliveryDateFilters.includes('ALL'),
               })}
               label="Todas"
+              startIcon={<DotsNineThinIcon />}
               onClick={() => selectDeliveryDate('ALL')}
+            />
+            <ActionButton
+              className={cn('selectable-group__item', {
+                'selectable-group__item--selected': selectedDeliveryDateFilters.includes('CUSTOM'),
+              })}
+              label="Custom"
+              startIcon={<GearIcon />}
+              onClick={() => selectDeliveryDate('CUSTOM')}
             />
           </div>
         </div>
