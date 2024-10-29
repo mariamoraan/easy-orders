@@ -9,7 +9,7 @@ export interface Order {
   status: OrderStatus;
   clientName: string;
   clientPhone?: string;
-  clientAddress?: string;
+  deliveryAddress?: string;
   clientId?: string;
   company: string;
   description: string;

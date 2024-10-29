@@ -101,6 +101,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     fontWeight: 'bold',
   },
+  bold: {
+    fontWeight: 'bold',
+  },
 });
 
 interface Props {
@@ -127,10 +130,6 @@ export const PrintableOrder = (props: Props) => {
               <Text style={styles.infoRowContent}>{order.clientName || '-'}</Text>
             </View>
             <View style={styles.infoRow}>
-              <Text style={styles.infoRowTitle}>{t('order-detail.client-address')}</Text>
-              <Text style={styles.infoRowContent}>{order.clientAddress || '-'}</Text>
-            </View>
-            <View style={styles.infoRowEven}>
               <Text style={styles.infoRowTitle}>{t('order-detail.client-phone')}</Text>
               <Text style={styles.infoRowContent}>{order.clientPhone || '-'}</Text>
             </View>
@@ -152,19 +151,23 @@ export const PrintableOrder = (props: Props) => {
               </Text>
             </View>
             <View style={styles.infoRow}>
+              <Text style={styles.infoRowTitle}>{t('order-detail.delivery-address')}</Text>
+              <Text style={styles.infoRowContent}>{order.deliveryAddress || '-'}</Text>
+            </View>
+            <View style={styles.infoRowEven}>
               <Text style={styles.infoRowTitle}>{t('order-detail.sign')}</Text>
               <Text style={styles.infoRowContent}>
                 {order.signal || '-'} {user?.currency || '€'}
               </Text>
             </View>
-            <View style={styles.infoRowEven}>
+            <View style={styles.infoRow}>
               <Text style={styles.infoRowTitle}>{t('order-detail.price')}</Text>
               <Text style={styles.infoRowContent}>
                 {order.price || '-'} {user?.currency || '€'}
               </Text>
             </View>
-            <View style={styles.infoRow}>
-              <Text style={styles.infoRowTitle}>{t('order-detail.total')}</Text>
+            <View style={styles.infoRowEven}>
+              <Text style={[styles.infoRowTitle, styles.bold]}>{t('order-detail.total')}</Text>
               <View style={styles.statusTagWrapper}>
                 {OrderStatusIcon[order.status]}
                 <Text style={styles.infoRowContent}>

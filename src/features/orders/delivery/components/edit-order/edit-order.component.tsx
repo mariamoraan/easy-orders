@@ -31,7 +31,7 @@ const voidOrder: Order = {
   status: OrderStatus.PENDING,
   clientName: '',
   clientPhone: '',
-  clientAddress: '',
+  deliveryAddress: '',
   clientId: '',
   company: '',
   description: '',
@@ -64,14 +64,6 @@ export const EditOrder = (props: Props) => {
             <Input
               value={editedOrder.clientName}
               onChange={(clientName: string) => setEditedOrder((prev) => ({ ...prev, clientName }))}
-              className={cn('info-row__content')}
-            />
-          </div>
-          <div className={cn('info-row')}>
-            <p className={cn('info-row__title')}>{t('order-detail.client-address')}</p>
-            <Input
-              value={editedOrder.clientAddress}
-              onChange={(clientAddress: string) => setEditedOrder((prev) => ({ ...prev, clientAddress }))}
               className={cn('info-row__content')}
             />
           </div>
@@ -114,6 +106,16 @@ export const EditOrder = (props: Props) => {
                   status: (option?.value as OrderStatus) || OrderStatus.PENDING,
                 }))
               }
+            />
+          </div>
+          <div className={cn('info-row')}>
+            <p className={cn('info-row__title')}>{t('order-detail.delivery-address')}</p>
+            <Input
+              value={editedOrder.deliveryAddress}
+              onChange={(deliveryAddress: string) =>
+                setEditedOrder((prev) => ({ ...prev, deliveryAddress: deliveryAddress }))
+              }
+              className={cn('info-row__content')}
             />
           </div>
           <div className={cn('info-row')}>

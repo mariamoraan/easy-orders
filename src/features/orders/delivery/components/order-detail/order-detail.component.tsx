@@ -25,10 +25,6 @@ export const OrderDetail = (props: Props) => {
           <p className={cn('info-row__content')}>{order.clientName || '-'}</p>
         </div>
         <div className={cn('info-row')}>
-          <p className={cn('info-row__title')}>{t('order-detail.client-address')}</p>
-          <p className={cn('info-row__content')}>{order.clientAddress || '-'}</p>
-        </div>
-        <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.client-phone')}</p>
           <p className={cn('info-row__content')}>{order.clientPhone || '-'}</p>
         </div>
@@ -48,6 +44,10 @@ export const OrderDetail = (props: Props) => {
           <div className={cn('info-row__content')}>
             <StatusTag status={order.status} />
           </div>
+        </div>
+        <div className={cn('info-row')}>
+          <p className={cn('info-row__title')}>{t('order-detail.delivery-address')}</p>
+          <p className={cn('info-row__content')}>{order.deliveryAddress || '-'}</p>
         </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.sign')}</p>
