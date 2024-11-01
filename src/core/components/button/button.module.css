@@ -1,4 +1,5 @@
 .button {
+  position: relative;
   padding: 12px 24px;
   max-width: max-content;
   display: flex;

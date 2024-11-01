@@ -15,6 +15,7 @@ interface Props {
   loading?: boolean;
   styleType?: 'icon' | 'outlined-icon';
   small?: boolean;
+  mark?: React.ReactNode;
 }
 
 export const Button = (props: Props) => {
@@ -30,6 +31,7 @@ export const Button = (props: Props) => {
     loading = false,
     styleType,
     small,
+    mark,
   } = props;
 
   if (loading)
@@ -63,6 +65,7 @@ export const Button = (props: Props) => {
       {startIcon}
       {label}
       {endIcon}
+      {mark}
     </button>
   );
 };

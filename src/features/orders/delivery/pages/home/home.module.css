@@ -68,8 +68,7 @@
   margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  overflow: hidden;
+  gap: 16px;
 }
 
 .orders-count {
@@ -117,6 +116,19 @@
   background: var(--primary-color);
   border-radius: 4px;
   color: var(--on-primary-color);
+}
+
+.filters-mark {
+  position: absolute;
+  top: -1ch;
+  right: -1ch;
+  width: 2ch;
+  height: 2ch;
+  border-radius: 100%;
+  background: white;
+  border: 1px solid black;
+  z-index: 1000;
+  font-size: 12px;
 }
 
 .orders {

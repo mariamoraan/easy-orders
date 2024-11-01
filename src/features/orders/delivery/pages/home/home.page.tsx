@@ -19,10 +19,19 @@ export const HomePage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { company } = useCompany();
-  const { orders, count } = useOrders();
+  const { orders, count, filters } = useOrders();
   const [isFetching, setIsFetching] = useState(false);
   if (!user) return null;
   if (getOnboardingStep(user) !== ONBOARDING_STEPS.COMPLETED) return <Navigate to={ProtectedUrls.ONBOARDING} />;
+
+  const calcFiltersNumber = () => {
+    const hasDeliveryDateFilter = filters.deliveryDate.from || filters.deliveryDate.to;
+    const hasStatusFilter = filters.status.length < 4;
+    let counter = 0;
+    counter = counter + (hasDeliveryDateFilter ? 1 : 0);
+    counter = counter + (hasStatusFilter ? 1 : 0);
+    return counter;
+  };
 
   const handleScroll = () => {
     if (
@@ -65,7 +74,13 @@ export const HomePage = () => {
         <span className={cn('orders-count')}>
           {orders.length} de {count}
         </span>
-        <Button onClick={() => navigate(ProtectedUrls.FILTERS)} label={'Filtrar'} startIcon={<FilterIcon />} small />
+        <Button
+          onClick={() => navigate(ProtectedUrls.FILTERS)}
+          label={'Filtrar'}
+          startIcon={<FilterIcon />}
+          small
+          mark={calcFiltersNumber() > 0 && <span className={cn('filters-mark')}>{calcFiltersNumber()}</span>}
+        />
         <Button onClick={() => navigate(ProtectedUrls.NEW_ORDER)} label={'Nuevo'} startIcon={<AddCircleIcon />} small />
       </div>
       {!orders.length && <p className={cn('no-orders')}>No hay pedidos</p>}
