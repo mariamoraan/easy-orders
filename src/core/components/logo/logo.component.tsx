@@ -1,4 +1,4 @@
-import LogoImage from '@/assets/delivery-truck.png';
+import LogoImage from '@/assets/icon_1024x1024.png';
 import styles from './logo.module.css';
 import { bind } from '@/core/styles/bind';
 const cn = bind(styles);

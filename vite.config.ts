@@ -15,25 +15,19 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
 
     icons: [
       {
-        src: '/delivery-truck.png',
+        src: '/icon_192x192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'favicon',
       },
       {
-        src: '/delivery-truck.png',
+        src: '/icon_512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'favicon',
       },
       {
-        src: '/delivery-truck.png',
-        sizes: '180x180',
-        type: 'image/png',
-        purpose: 'apple touch icon',
-      },
-      {
-        src: '/delivery-truck.png',
+        src: '/icon_512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any maskable',
