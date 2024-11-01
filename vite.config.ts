@@ -15,19 +15,19 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
 
     icons: [
       {
-        src: '/icon_192x192.png',
+        src: '/icon-192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'favicon',
       },
       {
-        src: '/icon_512x512.png',
+        src: '/icon-512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'favicon',
       },
       {
-        src: '/icon_512x512.png',
+        src: '/icon-192-maskable.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any maskable',
