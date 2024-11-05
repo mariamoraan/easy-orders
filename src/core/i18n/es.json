@@ -18,6 +18,10 @@
       "READY": "Listo",
       "DELIVERED": "Entregado",
       "CANCELLED": "Cancelado"
+    },
+    "bill-status": {
+      "PENDING": "Pendiente",
+      "DONE": "Pagado"
     }
   },
   "login": {
@@ -61,7 +65,8 @@
     "client-phone": "Teléfono del cliente",
     "description": "Descripción",
     "signal": "Señal",
-    "create": "Crear"
+    "create": "Crear",
+    "paid-state": "Pago"
   },
   "order-detail": {
     "order": "Pedido",
@@ -73,6 +78,7 @@
     "delivery-address": "Destino",
     "client-phone": "Teléfono",
     "price": "Precio",
-    "total": "Total"
+    "total": "Total",
+    "paid-state": "Pago"
   }
 }

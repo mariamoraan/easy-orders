@@ -7,6 +7,8 @@ import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/
 import { OrderStatusIcon, StatusColors } from '../status-tag/status-tag.component';
 import MontserratFont from './Montserrat-Medium.ttf';
 import MontserratRegularFont from './Montserrat-Regular.ttf';
+import { BillStatusColor } from '../bill-status-tag/bill-status-tag.component';
+import { BillStatus } from '@/features/orders/domain/bill-state';
 
 Font.register({
   family: 'Montserrat',
@@ -158,18 +160,24 @@ export const PrintableOrder = (props: Props) => {
           <View style={styles.info}>
             <Text style={styles.sectionTitle}>Facturación</Text>
             <View style={styles.infoRowEven}>
+              <Text style={styles.infoRowTitle}>{t('order-detail.paid-state')}</Text>
+              <Text style={{ ...styles.statusTag, color: BillStatusColor[order.billStatus ?? BillStatus.PENDING] }}>
+                {t(`order.bill-status.${order.billStatus ?? BillStatus.PENDING}`)}
+              </Text>
+            </View>
+            <View style={styles.infoRow}>
               <Text style={styles.infoRowTitle}>{t('order-detail.price')}</Text>
               <Text style={styles.infoRowContent}>
                 {order.price || '-'} {order.price ? user?.currency || '€' : null}
               </Text>
             </View>
-            <View style={styles.infoRow}>
+            <View style={styles.infoRowEven}>
               <Text style={styles.infoRowTitle}>{t('order-detail.sign')}</Text>
               <Text style={styles.infoRowContent}>
                 {order.signal || '-'} {order.signal ? user?.currency || '€' : null}
               </Text>
             </View>
-            <View style={styles.infoRowEven}>
+            <View style={styles.infoRow}>
               <Text style={[styles.infoRowTitle, styles.bold]}>{t('order-detail.total')}</Text>
               <View style={styles.statusTagWrapper}>
                 {OrderStatusIcon[order.status]}

@@ -5,6 +5,7 @@ import { Order } from '@/features/orders/domain/order';
 import { StatusTag } from '../status-tag/status-tag.component';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
 import { getTotalPrice } from '@/features/orders/domain/utils';
+import { BillStatusTag } from '../bill-status-tag/bill-status-tag.component';
 const cn = bind(styles);
 
 interface Props {
@@ -52,6 +53,12 @@ export const OrderDetail = (props: Props) => {
       </div>
       <div className={cn('info')}>
         <p className={cn('section-title')}>Facturación</p>
+        <div className={cn('info-row')}>
+          <p className={cn('info-row__title')}>{t('order-detail.paid-state')}</p>
+          <div className={cn('info-row__content')}>
+            <BillStatusTag billStatus={order.billStatus} />
+          </div>
+        </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.price')}</p>
           <p className={cn('info-row__content')}>

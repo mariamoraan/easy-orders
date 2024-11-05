@@ -14,6 +14,7 @@ import {
 import { db } from '@/core/firebase';
 import { DateTime } from '@/core/datetime/datetime';
 import { OrdersFilters } from '../domain/orders-filters';
+import { BillStatus } from '../domain/bill-state';
 
 export class OrdersFirebaseRepository implements OrdersRepository {
   public async findAll(companyId: string, filters: OrdersFilters): Promise<Order[]> {
@@ -46,6 +47,7 @@ export class OrdersFirebaseRepository implements OrdersRepository {
         description: orderData.description || '',
         signal: orderData.signal || 0,
         price: orderData.price || 0,
+        billStatus: orderData.billStatus || BillStatus.PENDING,
       };
       orders.push(order);
     });
@@ -70,6 +72,7 @@ export class OrdersFirebaseRepository implements OrdersRepository {
         description: orderData.description || '',
         signal: orderData.signal || 0,
         price: orderData.price || 0,
+        billStatus: orderData.billStatus || BillStatus.PENDING,
       };
       return order;
     }
@@ -105,6 +108,7 @@ export class OrdersFirebaseRepository implements OrdersRepository {
       description: order.description || null,
       signal: order.signal || null,
       price: order.price || null,
+      billStatus: order.billStatus || BillStatus.PENDING,
     };
     setDoc(docRef, updatedOrder);
   }

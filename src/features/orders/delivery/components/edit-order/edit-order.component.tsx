@@ -12,6 +12,8 @@ import { StatusSelector } from '../status-selector/status-selector.component';
 import { InputNumber } from '@/core/components/form/input-number/input-number.component';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
 import { getTotalPrice } from '@/features/orders/domain/utils';
+import { BillStatusSelector } from '../bill-status-selector/bill-status-selector.component';
+import { BillStatus } from '@/features/orders/domain/bill-state';
 const cn = bind(styles);
 
 interface Props {
@@ -37,6 +39,7 @@ const voidOrder: Order = {
   description: '',
   signal: 0,
   price: 0,
+  billStatus: BillStatus.PENDING,
 };
 
 export const EditOrder = (props: Props) => {
@@ -121,6 +124,18 @@ export const EditOrder = (props: Props) => {
         </div>
         <div className={cn('info')}>
           <p className={cn('section-title')}>Facturación</p>
+          <div className={cn('info-row')}>
+            <p className={cn('info-row__title')}>{t('order-detail.paid-state')}</p>
+            <BillStatusSelector
+              defaultValue={order.billStatus}
+              onChange={(option) =>
+                setEditedOrder((prev) => ({
+                  ...prev,
+                  billStatus: (option?.value as BillStatus) || BillStatus.PENDING,
+                }))
+              }
+            />
+          </div>
           <div className={cn('info-row')}>
             <p className={cn('info-row__title')}>
               {t('order-detail.price')} ({user?.currency || '€'})

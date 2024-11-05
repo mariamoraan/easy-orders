@@ -1,0 +1,17 @@
+.bill-status-tag {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: small;
+  text-transform: uppercase;
+  border-radius: 24px;
+}
+
+.bill-status-tag--PENDING {
+  color: red;
+}
+
+.bill-status-tag--DONE {
+  color: green;
+}
