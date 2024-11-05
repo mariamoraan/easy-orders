@@ -190,6 +190,9 @@
   font-size: 1.2rem;
 }
 
+.order-main-content {
+}
+
 .order-title {
   display: flex;
   align-items: center;
@@ -198,18 +201,18 @@
 }
 
 .order-title__name {
+  border-radius: 4px;
   white-space: nowrap;
+  font-size: medium;
+  color: var(--dark-grey);
 }
 
 .order-title__client {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.order-title__client::before {
-  content: '|';
-  margin-right: 8px;
+  font-size: medium;
+  text-transform: uppercase;
 }
 
 .order-table {
@@ -239,16 +242,13 @@
   font-weight: 600;
 }
 
-.order-dates {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--dark-color);
-  font-size: 0.8rem;
-}
-
 .order-date {
   position: relative;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  color: var(--dark-color);
+  border: 1px solid var(--neutral-color-200);
+  border-radius: 4px;
 }
 
 .order-date--important {
@@ -261,11 +261,32 @@
   text-transform: uppercase;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 @keyframes appear {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (min-width: 1000px) {
+  .orders {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+  .orders-li {
+    border: 1px solid var(--light-grey);
+  }
+  .order-detail__link {
+    display: none;
   }
 }

@@ -7,6 +7,7 @@ const cn = bind(styles);
 
 interface Props {
   status: OrderStatus;
+  bordered?: boolean;
 }
 
 export const StatusColors: { [key in OrderStatus]: string } = {
@@ -24,10 +25,10 @@ export const OrderStatusIcon: { [key in OrderStatus]: React.ReactNode } = {
 };
 
 export const StatusTag = (props: Props) => {
-  const { status } = props;
+  const { status, bordered } = props;
   const { t } = useTranslate();
   return (
-    <p className={cn('order-status-tag', `order-status-tag--${status}`)}>
+    <p className={cn('order-status-tag', `order-status-tag--${status}`, { 'order-status-tag--bordered': bordered })}>
       {OrderStatusIcon[status]} {t(`order.status.${status}`)}
     </p>
   );

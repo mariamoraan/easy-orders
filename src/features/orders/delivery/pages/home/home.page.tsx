@@ -2,10 +2,10 @@ import { bind } from '@/core/styles/bind';
 import styles from './home.module.css';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
 import { getOnboardingStep, ONBOARDING_STEPS } from '@/features/onboarding/utils/get-onboarding-step';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { ProtectedUrls } from '@/core/routing/urls';
 import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
-import { AddCircleIcon, ArrowForwardIcon, FilterIcon, LongArrowRightIcon } from '@/core/icons';
+import { AddCircleIcon, ArrowForwardIcon, FilterIcon } from '@/core/icons';
 import { Suspense, useState } from 'react';
 import { useCompany } from '@/features/company/delivery/context/company.provider';
 import { useOrders } from '../../context/orders.provider';
@@ -84,6 +84,7 @@ export const HomePage = () => {
         <Button onClick={() => navigate(ProtectedUrls.NEW_ORDER)} label={'Nuevo'} startIcon={<AddCircleIcon />} small />
       </div>
       {!orders.length && <p className={cn('no-orders')}>No hay pedidos</p>}
+      <Outlet />
       <ul onScroll={handleScroll} className={cn('orders')}>
         {orders.length > 0 &&
           orders.map((order, index) => (
@@ -96,29 +97,26 @@ export const HomePage = () => {
             >
               <Suspense fallback={<div className={cn('order-li__skeleton')}></div>}>
                 <div className={cn('order__top-bar')}>
-                  <StatusTag status={order.status} />
-                  <ArrowForwardIcon className={cn('order-detail__link')} />
-                </div>
-                <div>
                   <div className={cn('order-title')}>
-                    <p className={cn('order-title__name')}>
-                      {t('home.order')} {order.orderNum}
-                    </p>
+                    <p className={cn('order-title__name')}>#{order.orderNum}</p>
                     {order.clientName && <p className={cn('order-title__client')}>{order.clientName}</p>}
                   </div>
+
+                  <ArrowForwardIcon className={cn('order-detail__link')} />
                 </div>
-                <div className={cn('order-dates')}>
-                  <p className={cn('order-date')}>{getRelativeDate(order.creationDate)}</p>
-                  <LongArrowRightIcon />
-                  <p
-                    className={cn('order-date', {
-                      'order-date--important':
-                        getRelativeDate(order.deliverDate) === t('dates.today') ||
-                        getRelativeDate(order.deliverDate) === t('dates.tomorrow'),
-                    })}
-                  >
-                    {getRelativeDate(order.deliverDate)}
-                  </p>
+                <div className={cn('order-main-content')}>
+                  <div className={cn('flex')}>
+                    <StatusTag bordered status={order.status} />
+                    <p
+                      className={cn('order-date', {
+                        'order-date--important':
+                          getRelativeDate(order.deliverDate) === t('dates.today') ||
+                          getRelativeDate(order.deliverDate) === t('dates.tomorrow'),
+                      })}
+                    >
+                      {getRelativeDate(order.deliverDate)}
+                    </p>
+                  </div>
                 </div>
               </Suspense>
             </li>
