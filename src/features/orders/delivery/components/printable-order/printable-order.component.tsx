@@ -183,7 +183,7 @@ export const PrintableOrder = (props: Props) => {
                 {OrderStatusIcon[order.status]}
                 <Text style={styles.infoRowContent}>
                   {getTotalPrice({ price: order.price, signal: order.signal })}{' '}
-                  {getTotalPrice({ price: order.price, signal: order.signal }) ? user?.currency || '€' : null}
+                  {getTotalPrice({ price: order.price, signal: order.signal }) !== '-' ? user?.currency || '€' : null}
                 </Text>
               </View>
             </View>

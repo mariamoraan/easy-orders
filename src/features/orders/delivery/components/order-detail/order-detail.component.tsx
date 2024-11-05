@@ -75,7 +75,7 @@ export const OrderDetail = (props: Props) => {
           <p className={cn('info-row__title', 'bold')}>{t('order-detail.total')}</p>
           <p className={cn('info-row__content')}>
             {getTotalPrice({ price: order.price, signal: order.signal })}{' '}
-            {getTotalPrice({ price: order.price, signal: order.signal }) ? user?.currency || '€' : null}
+            {getTotalPrice({ price: order.price, signal: order.signal }) !== '-' ? user?.currency || '€' : null}
           </p>
         </div>
       </div>
