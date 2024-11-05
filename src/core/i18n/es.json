@@ -20,7 +20,7 @@
       "CANCELLED": "Cancelado"
     },
     "bill-status": {
-      "PENDING": "Pendiente",
+      "PENDING": "Pendiente de pagar",
       "DONE": "Pagado"
     }
   },
@@ -66,7 +66,7 @@
     "description": "Descripción",
     "signal": "Señal",
     "create": "Crear",
-    "paid-state": "Pago"
+    "paid-state": "Estado"
   },
   "order-detail": {
     "order": "Pedido",
@@ -79,6 +79,6 @@
     "client-phone": "Teléfono",
     "price": "Precio",
     "total": "Total",
-    "paid-state": "Pago"
+    "paid-state": "Estado"
   }
 }
