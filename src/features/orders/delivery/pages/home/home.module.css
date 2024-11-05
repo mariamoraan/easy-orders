@@ -205,7 +205,6 @@
   border-radius: 4px;
   white-space: nowrap;
   font-size: medium;
-  color: var(--dark-grey);
 }
 
 .order-title__client {
@@ -272,7 +271,7 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   .orders {
     padding: 16px;
     display: grid;
