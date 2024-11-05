@@ -154,16 +154,19 @@ export const PrintableOrder = (props: Props) => {
               <Text style={styles.infoRowTitle}>{t('order-detail.delivery-address')}</Text>
               <Text style={styles.infoRowContent}>{order.deliveryAddress || '-'}</Text>
             </View>
+          </View>
+          <View style={styles.info}>
+            <Text style={styles.sectionTitle}>Facturación</Text>
             <View style={styles.infoRowEven}>
-              <Text style={styles.infoRowTitle}>{t('order-detail.sign')}</Text>
+              <Text style={styles.infoRowTitle}>{t('order-detail.price')}</Text>
               <Text style={styles.infoRowContent}>
-                {order.signal || '-'} {user?.currency || '€'}
+                {order.price || '-'} {order.price ? user?.currency || '€' : null}
               </Text>
             </View>
             <View style={styles.infoRow}>
-              <Text style={styles.infoRowTitle}>{t('order-detail.price')}</Text>
+              <Text style={styles.infoRowTitle}>{t('order-detail.sign')}</Text>
               <Text style={styles.infoRowContent}>
-                {order.price || '-'} {user?.currency || '€'}
+                {order.signal || '-'} {order.signal ? user?.currency || '€' : null}
               </Text>
             </View>
             <View style={styles.infoRowEven}>
@@ -171,7 +174,8 @@ export const PrintableOrder = (props: Props) => {
               <View style={styles.statusTagWrapper}>
                 {OrderStatusIcon[order.status]}
                 <Text style={styles.infoRowContent}>
-                  {getTotalPrice({ price: order.price, signal: order.signal })} {user?.currency || '€'}
+                  {getTotalPrice({ price: order.price, signal: order.signal })}{' '}
+                  {getTotalPrice({ price: order.price, signal: order.signal }) ? user?.currency || '€' : null}
                 </Text>
               </View>
             </View>

@@ -57,7 +57,7 @@
     "creation-date": "Fecha de creación",
     "daliver-date": "Fecha de entrega",
     "client-name": "Nombre",
-    "delivery-address": "Dirección de entrega",
+    "delivery-address": "Destino",
     "client-phone": "Teléfono del cliente",
     "description": "Descripción",
     "signal": "Señal",
@@ -70,7 +70,7 @@
     "client-name": "Nombre",
     "state": "Estado",
     "sign": "Señal",
-    "delivery-address": "Dirección de entrega",
+    "delivery-address": "Destino",
     "client-phone": "Teléfono",
     "price": "Precio",
     "total": "Total"

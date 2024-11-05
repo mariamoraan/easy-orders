@@ -118,16 +118,9 @@ export const EditOrder = (props: Props) => {
               className={cn('info-row__content')}
             />
           </div>
-          <div className={cn('info-row')}>
-            <p className={cn('info-row__title')}>
-              {t('order-detail.sign')} ({user?.currency || '€'})
-            </p>
-            <InputNumber
-              value={editedOrder.signal}
-              onChange={(signal: number) => setEditedOrder((prev) => ({ ...prev, signal }))}
-              className={cn('info-row__content')}
-            />
-          </div>
+        </div>
+        <div className={cn('info')}>
+          <p className={cn('section-title')}>Facturación</p>
           <div className={cn('info-row')}>
             <p className={cn('info-row__title')}>
               {t('order-detail.price')} ({user?.currency || '€'})
@@ -135,6 +128,16 @@ export const EditOrder = (props: Props) => {
             <InputNumber
               value={editedOrder.price}
               onChange={(price: number) => setEditedOrder((prev) => ({ ...prev, price }))}
+              className={cn('info-row__content')}
+            />
+          </div>
+          <div className={cn('info-row')}>
+            <p className={cn('info-row__title')}>
+              {t('order-detail.sign')} ({user?.currency || '€'})
+            </p>
+            <InputNumber
+              value={editedOrder.signal}
+              onChange={(signal: number) => setEditedOrder((prev) => ({ ...prev, signal }))}
               className={cn('info-row__content')}
             />
           </div>
