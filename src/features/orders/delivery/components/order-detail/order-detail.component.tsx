@@ -5,6 +5,7 @@ import { Order } from '@/features/orders/domain/order';
 import { StatusTag } from '../status-tag/status-tag.component';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
 import { getTotalPrice } from '@/features/orders/domain/utils';
+import { BillStatusTag } from '../bill-status-tag/bill-status-tag.component';
 const cn = bind(styles);
 
 interface Props {
@@ -49,22 +50,32 @@ export const OrderDetail = (props: Props) => {
           <p className={cn('info-row__title')}>{t('order-detail.delivery-address')}</p>
           <p className={cn('info-row__content')}>{order.deliveryAddress || '-'}</p>
         </div>
+      </div>
+      <div className={cn('info')}>
+        <p className={cn('section-title')}>Facturación</p>
         <div className={cn('info-row')}>
-          <p className={cn('info-row__title')}>{t('order-detail.sign')}</p>
-          <p className={cn('info-row__content')}>
-            {order.signal || '-'} {user?.currency || '€'}
-          </p>
+          <p className={cn('info-row__title')}>{t('order-detail.paid-state')}</p>
+          <div className={cn('info-row__content')}>
+            <BillStatusTag billStatus={order.billStatus} />
+          </div>
         </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title')}>{t('order-detail.price')}</p>
           <p className={cn('info-row__content')}>
-            {order.price || '-'} {user?.currency || '€'}
+            {order.price || '-'} {order.price ? user?.currency || '€' : null}
+          </p>
+        </div>
+        <div className={cn('info-row')}>
+          <p className={cn('info-row__title')}>{t('order-detail.sign')}</p>
+          <p className={cn('info-row__content')}>
+            {order.signal || '-'} {order.signal ? user?.currency || '€' : null}
           </p>
         </div>
         <div className={cn('info-row')}>
           <p className={cn('info-row__title', 'bold')}>{t('order-detail.total')}</p>
           <p className={cn('info-row__content')}>
-            {getTotalPrice({ price: order.price, signal: order.signal })} {user?.currency || '€'}
+            {getTotalPrice({ price: order.price, signal: order.signal })}{' '}
+            {getTotalPrice({ price: order.price, signal: order.signal }) !== '-' ? user?.currency || '€' : null}
           </p>
         </div>
       </div>
