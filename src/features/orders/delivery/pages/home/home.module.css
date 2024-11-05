@@ -176,6 +176,7 @@
   animation-duration: 500ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  transition: 200ms ease;
 }
 
 .orders-li:first-child {
@@ -248,16 +249,11 @@
   font-size: 0.8rem;
   color: var(--dark-color);
   border: 1px solid var(--neutral-color-200);
+  background: rgba(225, 224, 224, 0.1);
   border-radius: 4px;
 }
 
 .order-date--important {
-  padding: 4px 8px;
-  border: 1px solid var(--on-background-color);
-  border-radius: 4px;
-  background: var(--on-background-color);
-  color: var(--background-color);
-  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -288,5 +284,12 @@
   }
   .order-detail__link {
     display: none;
+  }
+}
+
+@media (hover: hover) {
+  .orders-li:hover {
+    cursor: pointer;
+    border-color: var(--neutral-color-500);
   }
 }

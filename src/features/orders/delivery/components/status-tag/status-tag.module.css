@@ -29,3 +29,20 @@
   border: 1px solid var(--neutral-color-200);
   border-radius: 4px;
 }
+
+.order-status-tag--PENDING.order-status-tag--bordered {
+  border: 1px solid orange;
+  background: rgba(255, 165, 0, 0.1);
+}
+.order-status-tag--READY.order-status-tag--bordered {
+  border: 1px solid purple;
+  background: rgba(128, 0, 128, 0.1);
+}
+.order-status-tag--DELIVERED.order-status-tag--bordered {
+  border: 1px solid green;
+  background: rgba(0, 128, 0, 0.1);
+}
+.order-status-tag--CANCELLED.order-status-tag--bordered {
+  border: 1px solid red;
+  background: rgba(255, 0, 0, 0.1);
+}
