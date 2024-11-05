@@ -189,7 +189,7 @@ export const PrintableOrder = (props: Props) => {
             </View>
           </View>
           {order.description && (
-            <View style={styles.info}>
+            <View break style={styles.info}>
               <Text style={styles.sectionTitle}>Detalle</Text>
               <Text style={styles.description}>{order.description}</Text>
             </View>
