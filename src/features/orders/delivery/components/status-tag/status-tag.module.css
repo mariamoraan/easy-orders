@@ -31,18 +31,18 @@
 }
 
 .order-status-tag--PENDING.order-status-tag--bordered {
-  border: 1px solid orange;
+  border-color: orange;
   background: rgba(255, 165, 0, 0.1);
 }
 .order-status-tag--READY.order-status-tag--bordered {
-  border: 1px solid purple;
+  border-color: purple;
   background: rgba(128, 0, 128, 0.1);
 }
 .order-status-tag--DELIVERED.order-status-tag--bordered {
-  border: 1px solid green;
+  border-color: green;
   background: rgba(0, 128, 0, 0.1);
 }
 .order-status-tag--CANCELLED.order-status-tag--bordered {
-  border: 1px solid red;
+  border-color: red;
   background: rgba(255, 0, 0, 0.1);
 }
