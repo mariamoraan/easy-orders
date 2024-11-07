@@ -91,3 +91,20 @@
     opacity: 1;
   }
 }
+
+@media (min-width: 1200px) {
+  .wrapper {
+    overflow: visible;
+  }
+  .header {
+    padding-bottom: 16px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--neutral-color-200);
+    background: #fcfcfc;
+  }
+
+  .title {
+    font-size: larger;
+    text-transform: none;
+  }
+}

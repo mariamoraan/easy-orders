@@ -55,14 +55,8 @@
   .header {
     padding-bottom: 16px;
     margin-bottom: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-bottom: 1px solid var(--neutral-color-200);
     background: #fcfcfc;
-  }
-  .header__go-back-icon {
-    display: none;
   }
 
   .title {
