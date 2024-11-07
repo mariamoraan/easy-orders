@@ -195,7 +195,7 @@ export const FiltersPage = () => {
         <ActionButton onClick={() => navigate(-1)} label={<SaveIcon />} />
       </div>
       <div className={cn('content')}>
-        <div>
+        <div className={cn('selectable-group-wrapper')}>
           <h3 className={cn('selectable-group__title')}>Por estado</h3>
           <div className={cn('selectable-group')}>
             {Object.keys(OrderStatus).map((status) => (
@@ -211,7 +211,7 @@ export const FiltersPage = () => {
             ))}
           </div>
         </div>
-        <div>
+        <div className={cn('selectable-group-wrapper')}>
           <h3 className={cn('selectable-group__title')}>Por fecha de entrega</h3>
           <div className={cn('selectable-group')}>
             <ActionButton

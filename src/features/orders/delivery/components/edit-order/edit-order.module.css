@@ -77,3 +77,29 @@
     opacity: 1;
   }
 }
+
+@media (min-width: 1200px) {
+  .header {
+    padding-bottom: 16px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--neutral-color-200);
+    background: #fcfcfc;
+  }
+
+  .title {
+    font-size: larger;
+    text-transform: none;
+  }
+  .content {
+    padding: 24px;
+    width: 1200px;
+    align-self: center;
+    overflow: visible;
+  }
+  @media (hover: hover) {
+    .links__li:hover {
+      cursor: pointer;
+      border-color: var(--dark-color);
+    }
+  }
+}

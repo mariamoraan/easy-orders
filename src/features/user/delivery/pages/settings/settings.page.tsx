@@ -31,7 +31,7 @@ export const SettingsPage = () => {
   return (
     <div className={cn('wrapper')}>
       <div className={cn('header')}>
-        <ActionButton label={<ArrowBackIcon />} onClick={goBack} />
+        <ActionButton label={<ArrowBackIcon />} onClick={goBack} className={cn('header__go-back-icon')} />
         <h2 className={cn('title')}>Settings</h2>
       </div>
       <ul className={cn('links')}>
@@ -39,13 +39,13 @@ export const SettingsPage = () => {
           <li key={label} className={cn('links__li')}>
             <Icon size={18} />
             <p className={cn('links__li__label')}>{label}</p>
-            <ArrowForwardIcon />
+            <ArrowForwardIcon className={cn('links__li__icon')} />
           </li>
         ))}
         <li className={cn('links__li')} onClick={logout}>
           <LogoutIcon size={18} />
           <p className={cn('links__li__label')}>Logout</p>
-          <ArrowForwardIcon />
+          <ArrowForwardIcon className={cn('links__li__icon')} />
         </li>
       </ul>
     </div>
