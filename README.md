@@ -59,6 +59,7 @@ For support, email mariamoranluaces@gmail.com or join our Slack channel.
 - [ ] Clients management
 - [ ] Itemized invoice
 - [ ] Employees support
+- [ ] Table view in large devices
 
 ## Tech Stack
 

@@ -11,6 +11,7 @@
 
 .top-bar {
   padding: 16px 16px 0 16px;
+
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -66,6 +67,7 @@
 .action-bar {
   padding: 0 16px;
   margin-bottom: 16px;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -133,6 +135,7 @@
 
 .orders {
   overflow-y: auto;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -283,6 +286,26 @@
   }
   .order-detail__link {
     display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .top-bar,
+  .action-bar,
+  .orders,
+  .no-orders {
+    align-self: center;
+    width: 100%;
+  }
+  .title {
+    width: 1200px;
+    margin-bottom: 24px;
+    align-self: center;
+  }
+  .top-bar {
+    padding-bottom: 16px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--dark-grey);
   }
 }
 

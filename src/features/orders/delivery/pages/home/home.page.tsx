@@ -2,7 +2,7 @@ import { bind } from '@/core/styles/bind';
 import styles from './home.module.css';
 import { useAuth } from '@/features/auth/delivery/context/auth.context';
 import { getOnboardingStep, ONBOARDING_STEPS } from '@/features/onboarding/utils/get-onboarding-step';
-import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ProtectedUrls } from '@/core/routing/urls';
 import { useTranslate } from '@/core/i18n/hooks/use-translate.hook';
 import { AddCircleIcon, ArrowForwardIcon, FilterIcon } from '@/core/icons';
@@ -84,7 +84,6 @@ export const HomePage = () => {
         <Button onClick={() => navigate(ProtectedUrls.NEW_ORDER)} label={'Nuevo'} startIcon={<AddCircleIcon />} small />
       </div>
       {!orders.length && <p className={cn('no-orders')}>No hay pedidos</p>}
-      <Outlet />
       <ul onScroll={handleScroll} className={cn('orders')}>
         {orders.length > 0 &&
           orders.map((order, index) => (
