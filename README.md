@@ -1,33 +1,69 @@
 # Easy Orders
 
-**✨✨Tip: use the "Use this template" button available at the top right✨✨**
+Easy Orders is a multi-platform app designed for small businesses, simplifying order management anytime, anywhere.
 
-## Description
+## Installation
+
+Install Easy Orders with npm
+
+```bash
+  npm install
+```
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git@github.com:mariamoraan/easy-orders.git
+```
+
+Go to the project directory
+
+```bash
+  cd easy-orders
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+## Support
+
+For support, email mariamoranluaces@gmail.com or join our Slack channel.
 
 ## Features
 
-- Complete setup of Vite, React, TypeScript, and all other tools.
-- Pre-configured unit tests and linting.
-- CSS class management with classname/bind.
-- Routing with react-router-dom.
-- Translations implemented with i18n.
-- Code formatting with Prettier.
-- Code linting with ESLint.
-- Automatic code formatting and linting before each commit.
-- Alias configuration for simplified imports.
+- Visualize/Create/Modify orders
+- Filter order by status [PENDANT/READY/DELIVERED/CANCELLED]
+- Download order as PDF
+- Orders storage in the cloud
 
-## How to Run the Project
+## Roadmap
 
-1. Install dependencies
+# First Quarter
 
-```
-npm install
-```
+- [x] Visualize/Create/Modify orders
+- [x] Filter order by status [PENDANT/READY/DELIVERED/CANCELLED]
+- [x] Download order as PDF
+- [x] Orders storage in the cloud
+- [ ] Multidevice support
+- [ ] Clients management
+- [ ] Itemized invoice
+- [ ] Employees support
 
-2. Start the development server:
+## Tech Stack
 
-```
-npm run dev
-```
+**Client:** React, Typescript, Jest, Testing Library, Cypress
 
-3. Open the application at http://localhost:3000
+**Auth:** Firebase
+
+**Database:** Firebase
