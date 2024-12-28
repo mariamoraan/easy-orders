@@ -38,7 +38,7 @@ Start the server
 
 ## Support
 
-For support, email mariamoranluaces@gmail.com or join our Slack channel.
+For support, email: mariamoranluaces@gmail.com or join our Slack channel.
 
 ## Features
 
