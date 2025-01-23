@@ -55,7 +55,7 @@ For support, email: mariamoranluaces@gmail.com or join our Slack channel.
 - [x] Filter order by status [PENDANT/READY/DELIVERED/CANCELLED]
 - [x] Download order as PDF
 - [x] Orders storage in the cloud
-- [ ] Multidevice support
+- [x] Multidevice support
 - [ ] Clients management
 - [ ] Itemized invoice
 - [ ] Employees support
