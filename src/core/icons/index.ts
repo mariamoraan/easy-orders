@@ -1,5 +1,5 @@
 import { MdOutlineBorderAll } from 'react-icons/md';
-import { LuLoader2 } from 'react-icons/lu';
+import { LuLoaderCircle } from 'react-icons/lu';
 import { IoIosArrowForward } from 'react-icons/io';
 import { CiDeliveryTruck } from 'react-icons/ci';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
@@ -30,7 +30,7 @@ import { GoDot } from 'react-icons/go';
 
 export {
   MdOutlineBorderAll as LogoIcon,
-  LuLoader2 as LoaderIcon,
+  LuLoaderCircle as LoaderIcon,
   IoIosArrowForward as ArrowForwardIcon,
   CiDeliveryTruck as TruckIcon,
   HiOutlineDotsVertical as DotsMenuIcon,
